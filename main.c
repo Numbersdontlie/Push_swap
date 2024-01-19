@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/16 17:27:48 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:32:56 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,41 +62,10 @@ int	main(int argc, char **argv)
 		//split the argv arg_parse
 		//fill the stack a
 		}
-		else if (argc > 2)
+		/*else if (argc > 2)
 		{
 		//split the argv
 		//fill the stack a 
-		}
+		}*/
 	}
 }
-
-//VALIDATOR//
-/*
-Create a function to validate the args passed
-as arguments. If there's an error:
--free the stacks
--show error message
--return
-*/
-int	is_valid(int argc, char **argv)
-{
-	int	i;
-	long *tmp;
-
-	i = 1;
-	while (i <= argc)
-	{
-		
-	}
-}
-
-//IS SORTED?//
-/*
-write a function to check if stack a is sorted
-*/
-
-//ROUTING?//
-/*
-Create a router function to pick algorithm 
-based on the number of args
-*/
