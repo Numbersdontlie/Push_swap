@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 01:23:02 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/21 13:21:19 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,82 +44,73 @@ void	ft_insert_data(t_node **head, t_node **tail, int num)
 }
 
 //Function to check args: reciving numbers? already sorted? are repeated nums?
-//Deallocate stack if needed
-int	ft_check_numbers(t_node **head)
+int	ft_check_numbers(t_node **head, t_node **tail)
 {
-	t_node	*tmp;
+	t_node	*tmp;//counter
 
-	tmp = head;
-	while (tmp != NULL)
+	tmp = head;//initialize at head
+	while (tmp != NULL)//iterate through the list
 	{
-		if (ft_isdigit(tmp->value) == 0)
+		if (ft_isdigit(tmp->value) == 0)//check for only numbers in list
 		{
-			//free the stack
-			//Exit with error
+			ft_stack_dealloc(&head, &tail);//dealocate if needed
+			exit("Error\n");//exit with error 
+		}
+		else if(tmp->value < INT_MIN || tmp->value > INT_MAX)//check if bigger than int 
+		{
+			ft_stack_dealloc(&head, &tail);//deallocate if needed
+			exit("Error\n");//exit with error status
+		}
+		tmp = tmp->next;//step of iteration
+	}
+	return (0);
+}
+
+//Function to check if the list is already sorted
+int	ft_check_sorted(t_node **head, t_node **tail)
+{
+	t_node	*tmp;//counter
+
+	tmp = head;//init at head
+	while (tmp != NULL)//iterate in list
+	{
+		if (tmp->value > tmp->next->value)//check if next value is lower than previous
+		{
+			ft_stack_dealloc(&head, &tail);//deallocate if needed
+			exit("Error\n");
 		}
 		tmp = tmp->next;
 	}
-
+	return (0);
 }
 
-int	ft_check_sorted(t_node **head)
+//Function to check if there are duplicate in the list
+int	ft_check_duplicates(t_node **head, t_node **tail)
 {
+	t_node	*tmp;//node to iterate
+	t_node	*num;//node to compare number
 
-}
-
-//Function to deallocate the stack
-void	stack_dealloc(t_node)
-{
-
-}
-
-
-void	ft_parser(char *s)
-{
-	//Loop
-		//check for sign of each argument
-		//check if the arguments are digits 
-		//convert from string to number and save it
-		//check for MAX_INT and MIN_INT
-		//Add the value to the stack A
-	//Once the stack is populated check for duplicates
-	//Return something
-}
-
-//VALIDATOR//
-/*
-Create a function to validate the args passed
-as arguments. If there's an error:
--free the stacks
--show error message
--return
-*/
-int	is_valid(int argc, char **argv)
-{
-	int	i;
-	long *tmp;
-
-	i = 1;
-	while (i <= argc)
+	if (head == NULL)//check for empty list
+		return (0);
+	tmp = head;//init at head
+	while (tmp != NULL)//to iterate the list
 	{
-		
+		num = tmp->next;//init at next node
+		while (num != NULL)//iterate through the list
+		{
+			if(tmp->value == num->value)//compare tmp value with value of node that come after it
+			{
+				ft_stack_dealloc(&head, &tail);//deallocate if needed
+				exit("Error\n");//exit with error
+			}
+			num = num->next;//step of iteration for num compare
+		}
+		tmp = tmp->next;//step of iteration for tmp
 	}
+	return (0);//return 0 if no duplicates where found
 }
 
-//IS SORTED?//
-/*
-write a function to check if stack a is sorted
-*/
-
-//ROUTING?//
-/*
-Create a router function to pick algorithm 
-based on the number of args
-*/
-
-#include "push_swap.h"
-
-void	stack_init(t_node **stack_a, int argc, char **argv)
+t_node	stack_init(t_node **stack_a, int argc, char **argv)
 {
 	int		i;
 	long	num;
