@@ -6,9 +6,19 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:23 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:00:18 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+*	@file utils_stack.c
+*	@brief Helper functions to operate with stacks
+*	the functions in this file help to
+*	operate the stacks: deallocate memory, size measure
+*	among others
+*
+*	@author Luis Perez (lperez-h)
+**/
 
 #include "push_swap.h"
 
@@ -30,24 +40,18 @@ void	ft_stack_dealloc(t_node **head, t_node **tail)
 	*tail = NULL;//set tail to null
 }
 
-//Function to check doubles in list
-int	ft_stack_iter(t_node **head, t_node **tail)
+//Function to measure the size of the stack
+int	ft_stack_size(t_node **head)
 {
+	int		count;
 	t_node	*tmp;
-	t_node	*compare;
 
+	count = 0;
 	tmp = head;
-	compare = head;
 	while (tmp->next != NULL)
 	{
-		if (tmp->next == compare->value)
-		{
-			ft_stack_dealloc(&head, &tail);
-			exit("Error\n");
-		}
-		else
-		{
-			compare = compare->next;
-		}
+		count++;
+		tmp = tmp->next;
 	}
+	return (count);
 }

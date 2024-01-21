@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:27 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/21 22:53:29 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 
-//Structure of my list//
+//Structure of my node//
 typedef struct	s_node{
 	int				value;//value of the node
 	int				order_idx;//index of the value when stack is sorted
@@ -48,7 +48,7 @@ typedef struct	s_node_details
 }	t_node_details;
 
 //This struct help to monitor nodes with max and min
-typedef struct	s_node_details
+typedef struct	s_node_data
 {
 	t_node_details *min;
 	t_node_details *mid;

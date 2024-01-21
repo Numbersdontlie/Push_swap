@@ -6,28 +6,30 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:19 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/21 23:11:52 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+/**
+*	@file init_stack.c
+*	@brief Create and initialize the stacks
+*	the functions in this file have the purpose
+*	of initialize empty list, insert data to it
+*	and check the parameters quality.
+*
+*	@author Luis Perez (lperez-h)
+**/
 
-//Function to initialize an empty list with head and tail null
-void	ft_initialize_list(t_node **head, t_node **tail)
-{
-	*head = NULL;
-	*tail = NULL;
-}
+# include "push_swap.h"
 
 //Function to put data into the stack A, it will add at the end of the list
 void	ft_insert_data(t_node **head, t_node **tail, int num)
 {
 	t_node	*node;
-	t_node	*aux;
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)//check fail of allocation
-		return (1);
+		exit (EXIT_FAILURE);
 	if (*head == NULL)//check if stack is empty to define name of the stack and how to pass it
 	{
 		*head = node;
@@ -38,71 +40,59 @@ void	ft_insert_data(t_node **head, t_node **tail, int num)
 	}
 	node->value = num;//assign value to node
 	node->prev = *tail;//assign prev to node
-	node->next = NULL;//assign next to node
+	node->next = NULL;//assign next to null
 	(*tail)->next = node;//assign next to the previous tail
 	*tail = node;//assign new tail (the node created)
 }
 
-//Function to check args: reciving numbers? already sorted? are repeated nums?
-int	ft_check_numbers(t_node **head, t_node **tail)
+//Function to check args: reciving numbers? 
+int	ft_check_numbers(t_node **head)
 {
 	t_node	*tmp;//counter
 
-	tmp = head;//initialize at head
+	tmp = *head;//initialize at head
 	while (tmp != NULL)//iterate through the list
 	{
 		if (ft_isdigit(tmp->value) == 0)//check for only numbers in list
-		{
-			ft_stack_dealloc(&head, &tail);//dealocate if needed
-			exit("Error\n");//exit with error 
-		}
+			return (1);
 		else if(tmp->value < INT_MIN || tmp->value > INT_MAX)//check if bigger than int 
-		{
-			ft_stack_dealloc(&head, &tail);//deallocate if needed
-			exit("Error\n");//exit with error status
-		}
+			return (1);
 		tmp = tmp->next;//step of iteration
 	}
 	return (0);
 }
 
 //Function to check if the list is already sorted
-int	ft_check_sorted(t_node **head, t_node **tail)
+int	ft_check_sorted(t_node **head)
 {
 	t_node	*tmp;//counter
 
-	tmp = head;//init at head
+	tmp = *head;//init at head
 	while (tmp != NULL)//iterate in list
 	{
 		if (tmp->value > tmp->next->value)//check if next value is lower than previous
-		{
-			ft_stack_dealloc(&head, &tail);//deallocate if needed
-			exit("Error\n");
-		}
+			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
 //Function to check if there are duplicate in the list
-int	ft_check_duplicates(t_node **head, t_node **tail)
+int	ft_check_duplicates(t_node **head)
 {
 	t_node	*tmp;//node to iterate
 	t_node	*num;//node to compare number
 
 	if (head == NULL)//check for empty list
 		return (0);
-	tmp = head;//init at head
+	tmp = *head;//init at head
 	while (tmp != NULL)//to iterate the list
 	{
 		num = tmp->next;//init at next node
 		while (num != NULL)//iterate through the list
 		{
 			if(tmp->value == num->value)//compare tmp value with value of node that come after it
-			{
-				ft_stack_dealloc(&head, &tail);//deallocate if needed
-				exit("Error\n");//exit with error
-			}
+				return (1);
 			num = num->next;//step of iteration for num compare
 		}
 		tmp = tmp->next;//step of iteration for tmp
@@ -110,26 +100,40 @@ int	ft_check_duplicates(t_node **head, t_node **tail)
 	return (0);//return 0 if no duplicates where found
 }
 
-t_node	stack_init(t_node **stack_a, int argc, char **argv)
+t_node	stack_a_init(char **argv)
 {
+	t_node	*head;
+	t_node	*tail;
 	int		i;
-	long	num;
-
+ 
 	i = 1;
 	while(argv[i])
 	{
-		if (ft_check_numbers(argc, argv) != 0)//ToDo
-		{
-			write(STDERR_FILENO, "Error\n", 6);
-			exit(1);
-		}
-		num = ft_atol(argv[i]);
-		if (num > INT_MAX || num < INT_MIN)
-		{
-			write(STDERR_FILENO, "Error\n", 6);
-			exit(1);
-		}
-		ft_fill_stack(stack_a, num);//ToDo
+		ft_insert_data(&head, &tail, ft_atol(argv[i]));
 		i++;
 	}
+	if (ft_check_duplicates(&head) == 1 || ft_check_numbers(&head) == 1 || ft_check_sorted(&head) == 1)
+	{
+		ft_stack_dealloc(&head, &tail);
+		exit (EXIT_FAILURE);
+	}
+	return (*head);
+}
+
+t_node	stack_b_init(t_node **stack_a)
+{
+	t_node **stack_b;
+	t_node	*head;
+	t_node	*tail;
+	int	i;
+	int	n;
+
+	i = 0;
+	n = ft_stack_size(&stack_a);
+	while (i < n - 3)
+	{
+		ft_insert_data(&head, &tail, 0);
+		i++;
+	}
+	return (**stack_b);
 }

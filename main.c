@@ -6,66 +6,32 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:21 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/21 22:59:43 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-
-/*int	main(int argc, char **argv)
-{
-	int		i;
-	int		j;
-	int		size;
-	char	*tmp;
-	char	*parser;
-	
-	i = 0;
-	j = 0;
-	
-	if (argc == 2)
-	{
-		tmp = ft_split(argv[1][i], ' ');//split the numbers and save in tmp
-		size = sizeof(tmp) / sizeof(tmp[0]);//size of the array
-		while (j <= size)
-		{
-			j++;//goes through the whole array until last element
-		}
-		//start to fill the linked list with this last element
-	}
-	else if (argc > 2)
-	{
-		parser = args_parser(argc, **argv);
-		size = sizeof(parser) / sizeof(parser[0]);
-		while (j <= size)
-		{
-			j++;//goes through the whole array until last element
-		}
-		//start to fill the linked list with this last element
-	}
-}*/
 
 int	main(int argc, char **argv)
 {
 	t_node	**stack_a;
 	t_node	**stack_b;
 
-	if (argc < 2)
-	{
-		write (STDERR_FILENO, "Error", 5);
-		write (1, "\n", 1);
-	}
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 3)
+		write (STDERR_FILENO, "Error\n", 6);
 	else 
 	{
-		if (argc == 2)
-		{
-		//split the argv arg_parse
-		//fill the stack a
-		}
-		/*else if (argc > 2)
-		{
-		//split the argv
-		//fill the stack a 
-		}*/
+		stack_a = ft_stack_a_init(argc, argv);
+		if (ft_stack_size(stack_a) <= 3)
+			ft_sort_stack_3(&stack_a);//ToDO
+		if (ft_stack_size(stack_a) > 3 && ft_stack_size(stack_a) <= 5)
+			ft_sort_stack_5(&stack_a);//ToDo
+		if (ft_stack_size(stack_a) > 5)
+			turk_algorithm(&stack_a, &stack_b);//ToDo -> ***Main part of the project!***
 	}
+	//ft_stack_dealloc(&stack_a);
+	//ft_stack_dealloc(&stack_b);
+	return (0);
 }
