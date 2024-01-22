@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 11:35:55 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:09:29 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_stack_size(t_node **head)
 	t_node	*tmp;
 
 	count = 0;
-	tmp = head;
+	tmp = *head;
 	while (tmp->next != NULL)
 	{
 		count++;

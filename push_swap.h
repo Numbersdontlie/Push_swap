@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 12:08:30 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:09:31 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int		ft_check_duplicates(t_node **head);
  * @param **argv: the arguments received by the program
  * @return *head: a pointer to the head of the list
 **/
-t_node	stack_a_init(char **argv);
+t_node	*ft_stack_a_init(char **argv);
 
 /**
  * @brief initialize the stack_b
@@ -152,7 +152,7 @@ t_node	stack_a_init(char **argv);
  * @param **stack_a: the stack_a
  * @return *head: a pointer to the head of the list
 **/
-t_node	stack_b_init(t_node **stack_a);
+t_node	ft_stack_b_init(t_node **stack_a);
 
 //Utils of stack
 /**
@@ -178,6 +178,7 @@ void	ft_stack_dealloc(t_node **head, t_node **tail);
  * @return count: the number of nodes in the list
 **/
 int		ft_stack_size(t_node **head);
+void  print_stack(t_node *root);
 
 //Last node (ToDo)
 

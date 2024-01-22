@@ -6,20 +6,21 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 11:28:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:09:35 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
+# include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_node	**stack_a;
-	t_node	**stack_b;
+	//t_node	**stack_b;
 
 	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 3)
+	//stack_b = NULL;
+	/*if (argc < 3)
 		write (STDERR_FILENO, "Error\n", 6);
 	else 
 	{
@@ -32,6 +33,17 @@ int	main(int argc, char **argv)
 			turk_algorithm(&stack_a, &stack_b);//ToDo -> ***Main part of the project!***
 	}
 	//ft_stack_dealloc(&stack_a);
-	//ft_stack_dealloc(&stack_b);
-	return (0);
+	//ft_stack_dealloc(&stack_b);*/
+	if (argc > 0)
+	{
+		*stack_a = ft_stack_a_init(argv);
+		t_node *curr;
+		curr = *stack_a;
+		while (curr->next != NULL)
+		{
+			printf("%d\n", curr->value);
+			curr = curr->next;
+		}
+		return (0);
+	}
 }
