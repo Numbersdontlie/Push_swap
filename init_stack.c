@@ -6,21 +6,39 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 23:11:52 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:47:03 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
-*	@file init_stack.c
-*	@brief Create and initialize the stacks
-*	the functions in this file have the purpose
-*	of initialize empty list, insert data to it
-*	and check the parameters quality.
-*
-*	@author Luis Perez (lperez-h)
+ * @file init_stack.c
+ * @brief Create and initialize the stacks
+ * the functions in this file have the purpose
+ * of initialize empty list, insert data to it
+ * and check the parameters quality.
+ * 
+ * @author Luis Perez (lperez-h)
 **/
 
 # include "push_swap.h"
+
+//Function to initialize a single 
+void	ft_node_init(t_node **head, t_node **tail, int num)
+{
+	t_node	*new_node;
+
+	new_node = malloc(sizeof(t_node));
+	if (new_node == NULL)
+	{
+		exit (EXIT_FAILURE);
+		return ;
+	}
+	new_node->value = num;
+	new_node->prev = NULL;
+	new_node->next = NULL;
+	*tail = new_node;
+	*head = new_node;
+}
 
 //Function to put data into the stack A, it will add at the end of the list
 void	ft_insert_data(t_node **head, t_node **tail, int num)
@@ -31,13 +49,7 @@ void	ft_insert_data(t_node **head, t_node **tail, int num)
 	if (node == NULL)//check fail of allocation
 		exit (EXIT_FAILURE);
 	if (*head == NULL)//check if stack is empty to define name of the stack and how to pass it
-	{
-		*head = node;
-		*tail = node;
-		node->prev = NULL;
-		node->next = NULL;
-		return ;
-	}
+		ft_node_init(head, tail, num);
 	node->value = num;//assign value to node
 	node->prev = *tail;//assign prev to node
 	node->next = NULL;//assign next to null
@@ -100,7 +112,7 @@ int	ft_check_duplicates(t_node **head)
 	return (0);//return 0 if no duplicates where found
 }
 
-t_node	stack_a_init(char **argv)
+t_node	ft_stack_a_init(char **argv)
 {
 	t_node	*head;
 	t_node	*tail;
@@ -120,20 +132,19 @@ t_node	stack_a_init(char **argv)
 	return (*head);
 }
 
-t_node	stack_b_init(t_node **stack_a)
+t_node	ft_stack_b_init(t_node **stack_a)
 {
-	t_node **stack_b;
 	t_node	*head;
 	t_node	*tail;
 	int	i;
 	int	n;
 
 	i = 0;
-	n = ft_stack_size(&stack_a);
+	n = ft_stack_size(stack_a);
 	while (i < n - 3)
 	{
 		ft_insert_data(&head, &tail, 0);
 		i++;
 	}
-	return (**stack_b);
+	return (*head);
 }

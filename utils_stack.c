@@ -6,18 +6,18 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 16:00:18 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:35:55 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
-*	@file utils_stack.c
-*	@brief Helper functions to operate with stacks
-*	the functions in this file help to
-*	operate the stacks: deallocate memory, size measure
-*	among others
-*
-*	@author Luis Perez (lperez-h)
+ * @file utils_stack.c
+ * @brief Helper functions to operate with stacks
+ * the functions in this file help to
+ * operate the stacks: deallocate memory, size measure
+ * among others
+ * 
+ * @author Luis Perez (lperez-h)
 **/
 
 #include "push_swap.h"

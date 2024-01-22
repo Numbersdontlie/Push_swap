@@ -6,9 +6,18 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:02:13 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:25 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:37:15 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file utils.c
+ * @brief Helper functions to operate during project
+ * the functions help to: convert char to long, check
+ * for digits, among others
+ * 
+ * @author Luis Perez (lperez-h)
+**/
 
 #include "push_swap.h"
 
