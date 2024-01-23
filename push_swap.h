@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 16:09:31 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:29:47 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,57 @@ typedef struct	s_node_data
 
 //Error handler (ToDo)
 
-//Operations in stack (ToDo)
+//**MOVEMENTS**//
+/**
+ * @brief swap the stack.
+ * 
+ * the function swap the first 2 values of the stack, the 1st value
+ * becomes the 2nd and viceversa. The rest of the stack remains as
+ * it was before the movement. 
+ * 
+ * @param **head: the pointer to the head of the list
+ * @return void
+**/
+void	ft_swap(t_node **head);
 
-//Stack init functions
+/**
+ * @brief rotate the stack.
+ * 
+ * the function rotate the stack: the 1st value of the stack will become
+ * the last value. The rest of the stack will move 1 position up
+ * 
+ * @param **head: the pointer to the head of the list
+ * @return void
+**/
+void	ft_rotate(t_node **head, t_node **tail);
+
+/**
+ * @brief reverse the stack.
+ * 
+ * the function reverse the stack: the last value of the stack will become
+ * the 1st value. The rest of the stack will move 1 position down
+ * 
+ * @param **head: the pointer to the head of the list
+ * @param **tail: the pointer to the tail of the list
+ * @return void
+**/
+void	ft_reverse_rotate(t_node **head, t_node **tail);
+
+/**
+ * @brief push the stack.
+ * 
+ * the function push the stack: the 1st value of the stack will become
+ * the 1st value of the other. The rest of the stack receiving the new 
+ * value will move 1 position down. The stack from where the number was 
+ * sent, will update the head pointer.
+ * 
+ * @param **head: the pointer to the head of the list
+ * @param **tail: the pointer to the tail of the list
+ * @return void
+**/
+void	ft_push(t_node **head_a, t_node **head_b);
+
+//**STACK INITIALIZATION**//
 /**
  * @brief Initialize the node.
  * 
@@ -178,6 +226,7 @@ void	ft_stack_dealloc(t_node **head, t_node **tail);
  * @return count: the number of nodes in the list
 **/
 int		ft_stack_size(t_node **head);
+
 void  print_stack(t_node *root);
 
 //Last node (ToDo)
@@ -187,6 +236,24 @@ void  print_stack(t_node *root);
 //Argv split (ToDo)
 
 //Utils (ToDo)
+/**
+ * @brief convert the arguments
+ * 
+ * This function convert the arguments received from user
+ * into long integer
+ * 
+ * @param *nptr: the pointer to the argument received
+ * @return result: the number already converted
+**/
 int	ft_atol(const char *nptr);
+
+/**
+ * @brief check the data type
+ * 
+ * This function check for integers data type
+ * 
+ * @param c: the number to check
+ * @return True or False
+**/
 int	ft_isdigit(int c);
 #endif

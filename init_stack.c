@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 16:09:33 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:23:21 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,17 @@
 void	ft_insert_data(t_node **head, t_node **tail, int num)
 {
 	t_node	*node;
-	t_node	*new_node;
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)//check fail of allocation
 		exit (EXIT_FAILURE);
 	if (*head == NULL)//check if stack is empty to define name of the stack and how to pass it
 	{
-		new_node = malloc(sizeof(t_node));
-		if (new_node == NULL)
-		{
-			exit (EXIT_FAILURE);
-			return ;
-		}
-		new_node->value = num;
-		new_node->prev = NULL;
-		new_node->next = NULL;
-		*tail = new_node;
-		*head = new_node;
+		node->value = num;
+		node->prev = NULL;
+		node->next = NULL;
+		*tail = node;
+		*head = node;
 	}
 	else
 	{
@@ -72,7 +65,6 @@ void	ft_insert_data(t_node **head, t_node **tail, int num)
 		(*tail)->next = node;//assign next to the previous tail
 		*tail = node;//assign new tail (the node created)
 	}
-	
 }
 
 //Function to check args: reciving numbers? 
@@ -83,7 +75,7 @@ int	ft_check_numbers(t_node **head)
 	tmp = *head;//initialize at head
 	while (tmp != NULL)//iterate through the list
 	{
-		if (ft_isdigit(tmp->value) == 0)//check for only numbers in list
+		if (sizeof(tmp->value) != sizeof(int))//check for only integers in list
 			return (1);
 		else if(tmp->value < INT_MIN || tmp->value > INT_MAX)//check if bigger than int 
 			return (1);
@@ -98,7 +90,7 @@ int	ft_check_sorted(t_node **head)
 	t_node	*tmp;//counter
 
 	tmp = *head;//init at head
-	while (tmp != NULL)//iterate in list
+	while (tmp != NULL && tmp->next != NULL)//iterate in list before reaching the end of list
 	{
 		if (tmp->value > tmp->next->value)//check if next value is lower than previous
 			return (1);
