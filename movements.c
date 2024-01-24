@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/23 19:23:18 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:14:55 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,70 @@ void	ft_swap(t_node **head)
 	tmp->prev = NULL;
 	tmp->next = head;
 	head = tmp;
+	if (*head == NULL || ft_stack_size(&head) == 1)//check for empty or just one element in list
+		return ;
 	//free(tmp)?;
-	//check for edge cases
 }
+//To swap both stacks use the t_stacks structure
 
 //ROTATE -> ra, rb, rr
 void	ft_rotate(t_node **head, t_node **tail)
 {
 	t_node *tmp;
 
-	tmp = (*head)->next;
-	(*head)->prev = tail;
-	(*head)->next = NULL;
-	tmp->prev = NULL;
-	(*tail)->next = head;
-	tail = head;
-	head = (*head)->next;
+	if (ft_stack_size(&head) > 3)
+	{
+		tmp = (*head)->next;
+		(*head)->prev = tail;
+		(*head)->next = NULL;
+		tmp->prev = NULL;
+		(*tail)->next = head;
+		tail = head;
+		head = (*head)->next;
+	}
+	else
+		return ;
 	//free(tmp)?;
-	//check for edge cases
 }
+//To rotate both stacks use the t_stacks structure
 
 //REVERSE ROTATE -> rra, rrb, rrr
 void	ft_reverse_rotate(t_node **head, t_node **tail)
 {
 	t_node	*tmp;
 
-	tmp = (*tail)->prev;
-	(*tail)->prev = NULL;
-	(*tail)->next = head;
-	tmp->next = NULL;
-	(*head)->prev = tail;
-	head = tail;
-	tail = (*tail)->prev;
+	if (ft_stack_size(&head) > 3)
+	{
+		tmp = (*tail)->prev;
+		(*tail)->prev = NULL;
+		(*tail)->next = head;
+		tmp->next = NULL;
+		(*head)->prev = tail;
+		head = tail;
+		tail = (*tail)->prev;
+	}
+	else
+		return ;
 	//free(tmp)?;
-	//check for edge cases
 }
+//To reverse both stacks use the t_stacks structure
 
 //PUSH -> pa, pb
 void	ft_push_a(t_node **head_a, t_node **head_b)
 {
 	t_node	*tmp;
 
-	tmp = (*head_b)->next;
-	(*head_a)->prev = head_b;
-	(*head_b)->prev = NULL;
-	(*head_b)->next = head_a;
-	tmp->prev = NULL;
-	head_a = head_b;
-	head_b = (*head_b)->next;
+	if (head_b != NULL)
+	{
+		tmp = (*head_b)->next;
+		(*head_a)->prev = head_b;
+		(*head_b)->prev = NULL;
+		(*head_b)->next = head_a;
+		tmp->prev = NULL;
+		head_a = head_b;
+		head_b = (*head_b)->next;
+	}
+	else 
+		return ;
 	//check for edge cases
 }

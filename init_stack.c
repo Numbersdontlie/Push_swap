@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/23 19:23:21 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:27:28 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,6 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-//Function to initialize a single 
-/*void	ft_node_init(t_node **head, t_node **tail, int num)
-{
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
-	if (new_node == NULL)
-	{
-		exit (EXIT_FAILURE);
-		return ;
-	}
-	new_node->value = num;
-	new_node->prev = NULL;
-	new_node->next = NULL;
-	*tail = new_node;
-	*head = new_node;
-}*/
-
-//Function to put data into the stack A, it will add at the end of the list
 void	ft_insert_data(t_node **head, t_node **tail, int num)
 {
 	t_node	*node;
@@ -67,7 +48,6 @@ void	ft_insert_data(t_node **head, t_node **tail, int num)
 	}
 }
 
-//Function to check args: reciving numbers? 
 int	ft_check_numbers(t_node **head)
 {
 	t_node	*tmp;//counter
@@ -84,7 +64,6 @@ int	ft_check_numbers(t_node **head)
 	return (0);
 }
 
-//Function to check if the list is already sorted
 int	ft_check_sorted(t_node **head)
 {
 	t_node	*tmp;//counter
@@ -99,7 +78,6 @@ int	ft_check_sorted(t_node **head)
 	return (0);
 }
 
-//Function to check if there are dupliprintf("%d\n", curr->value)cate in the list
 int	ft_check_duplicates(t_node **head)
 {
 	t_node	*tmp;//node to iterate
@@ -121,22 +99,25 @@ int	ft_check_duplicates(t_node **head)
 	}
 	return (0);//return 0 if no duplicates where found
 }
-
+//Still missing the negative number handle
 t_node	*ft_stack_a_init(char **argv)
 {
 	t_node	*head;
 	t_node	*tail;
 	int		i;
+	long	num;
  
 	i = 1;
 	head = NULL;
 	tail = NULL;
 	while(argv[i])
 	{
-		ft_insert_data(&head, &tail, ft_atol(argv[i]));
+		num = ft_atol(argv[i]);
+		ft_insert_data(&head, &tail, num);
 		i++;
+		num = 0;
 	}
-	print_stack(head);
+	//print_stack(head);
 	if (ft_check_duplicates(&head) == 1 || ft_check_numbers(&head) == 1 || ft_check_sorted(&head) == 1)
 	{
 		ft_stack_dealloc(&head, &tail);

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/22 23:49:17 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:27:31 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,29 @@ int	ft_stack_size(t_node **head)
 		tmp = tmp->next;
 	}
 	return (count);
+}
+
+//Function to check which algorithm to use based on stack size
+void	router(t_node **head)
+{
+	int	len;
+
+	len = ft_stack_size(&head);
+	if (len <= 3)
+		ft_sort_stack_3(&head);//ToDo. Also check if stack_size = 2 inside this function
+	else if (len >= 4)
+		ft_sort_stack_5(&head);//ToDo. Should check for size 4?
+	else if (len > 10)
+		ft_sort_stack_big(&head);//ToDo
+}
+
+//Function to index the initial array 
+void	ft_index(t_node **head)
+{
+	int	i;
+	t_node	*tmp;
+	
+	i = 0;
+	tmp = head;
+	
 }
