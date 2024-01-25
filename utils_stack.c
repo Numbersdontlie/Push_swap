@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/24 14:27:31 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/25 23:33:53 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,4 @@ void	router(t_node **head)
 		ft_sort_stack_5(&head);//ToDo. Should check for size 4?
 	else if (len > 10)
 		ft_sort_stack_big(&head);//ToDo
-}
-
-//Function to index the initial array 
-void	ft_index(t_node **head)
-{
-	int	i;
-	t_node	*tmp;
-	
-	i = 0;
-	tmp = head;
-	
 }

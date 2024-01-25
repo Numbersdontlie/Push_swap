@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/24 12:22:00 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/25 23:17:47 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 # include <limits.h>
 
 //Structure of my node//
-typedef struct	s_node{
+typedef struct	s_node
+{
 	int				value;//value of the node
 	int				order_idx;//index of the value when stack is sorted
 	int				list_idex;//current index of the value while unsorted
@@ -40,6 +41,12 @@ typedef struct	s_node{
 	struct s_node	*next;//next node
 	struct s_node	*prev;//prev node
 }	t_node;
+
+/*typedef struct	t_list
+{
+	struct	*head;
+	struct	*tail;
+}	t_list;*/
 
 //this structure help to reduce the # of parameters when passing 2 stack to a function
 typedef struct	s_stacks
