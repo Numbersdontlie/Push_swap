@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/25 23:17:47 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:16:45 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,4 +263,14 @@ int	ft_atol(const char *nptr);
  * @return True or False
 **/
 int	ft_isdigit(int c);
+
+/**
+ * @brief find the last node of the list
+ * 
+ * This function finds and return the last node of the list
+ * 
+ * @param head: the head of the list
+ * @return the last node of the list
+**/
+t_node	ft_last_node(t_node *head);
 #endif

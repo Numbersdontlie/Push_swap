@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/28 22:34:00 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:57:53 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 #include "push_swap.h"
 
 //Function to deallocate the list
-void	ft_stack_dealloc(t_node **head, t_node **tail)
+void	ft_stack_dealloc(t_node **head)
 {
 	t_node	*tmp;//counter
 
-	if (tail == NULL)//check if list is empty already
+	if (head == NULL)//check if list is empty already
 		return ;
 	tmp = *head;//init at head
 	while (tmp->next != NULL)//iterate until last element of list
@@ -36,8 +36,7 @@ void	ft_stack_dealloc(t_node **head, t_node **tail)
 		free(tmp->prev);//free the previous node
 	}
 	free(tmp);//free the last element of the list
-	*head = NULL;//set head to null
-	*tail = NULL;//set tail to null
+	*head = NULL;//set head(stack) to null
 }
 
 //Function to measure the size of the stack
@@ -56,18 +55,18 @@ int	ft_stack_size(t_node **head)
 	return (count);
 }
 
-void	ft_last_node(t_node *head)
+t_node	ft_last_node(t_node *head)
 {
 	t_node	*tmp;
 
 	tmp = head;
 	while (tmp != NULL)
 		tmp = tmp->next;
-	return (tmp);
+	return (*tmp);
 }
 
 //Function to check which algorithm to use based on stack size
-void	router(t_node **head)
+void	router(t_node *head)
 {
 	int	len;
 

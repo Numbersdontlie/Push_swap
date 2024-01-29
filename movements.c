@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/24 18:14:55 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:57:15 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,19 @@ void	ft_reverse_rotate(t_node **head, t_node **tail)
 //To reverse both stacks use the t_stacks structure
 
 //PUSH -> pa, pb
-void	ft_push_a(t_node **head_a, t_node **head_b)
+void	ft_push(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 
-	if (head_b != NULL)
+	if (stack_b != NULL)
 	{
-		tmp = (*head_b)->next;
-		(*head_a)->prev = head_b;
-		(*head_b)->prev = NULL;
-		(*head_b)->next = head_a;
+		tmp = (*stack_b)->next;
+		(*stack_a)->prev = stack_b;
+		(*stack_b)->prev = NULL;
+		(*stack_b)->next = stack_a;
 		tmp->prev = NULL;
-		head_a = head_b;
-		head_b = (*head_b)->next;
+		stack_a = stack_b;
+		stack_b = (*stack_b)->next;
 	}
 	else 
 		return ;
