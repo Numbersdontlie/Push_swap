@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/25 23:33:53 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/28 22:34:00 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ int	ft_stack_size(t_node **head)
 		tmp = tmp->next;
 	}
 	return (count);
+}
+
+void	ft_last_node(t_node *head)
+{
+	t_node	*tmp;
+
+	tmp = head;
+	while (tmp != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }
 
 //Function to check which algorithm to use based on stack size
