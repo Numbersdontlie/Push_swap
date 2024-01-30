@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/29 14:19:03 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/30 01:07:53 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,35 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-void	ft_insert_data(t_node **head, int num)
+void	ft_insert_data(t_node **stack, int num)
 {
 	t_node	*node;
-	t_node	**tail;
+	t_node	*head;
+	t_node	*tail;
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)//check fail of allocation
 		exit (EXIT_FAILURE);
-	if (*head == NULL)//check if stack is empty to define name of the stack and how to pass it
+	if (*stack == NULL)//check if stack is empty to define name of the stack and how to pass it
 	{
 		node->value = num;
 		node->prev = NULL;
 		node->next = NULL;
-		*head = node;
-		*tail = node;
+		head = node;
+		tail = node;
 	}
 	else
 	{
 		node->value = num;//assign value to node
-		**tail = ft_last_node(&head);
-		node->prev = *tail;//assign prev to node
-		node->next = NULL;//assign next to null
-		(*tail)->next = node;//assign next to the previous tail
-		*tail = node;//assign new tail (the node created)
+		tail = ft_last_node(&head);//find the tail
+		node->prev = tail;//assign tail as prev to node
+		node->next = NULL;//assign next as null, since is the new tail
+		tail->next = node;//assign next to the previous tail
+		tail = node;//assign new tail (the node created)
 	}
 }
 
-//Still missing the negative number handle
-t_node	*ft_stack_a_init(char **argv)
+void	*ft_stack_a_init(t_node **stack_a, char **argv)
 {
 	t_node	*head;
 	t_node	*tail;
@@ -63,17 +63,27 @@ t_node	*ft_stack_a_init(char **argv)
 	tail = NULL;
 	while(argv[i])
 	{
+		if (ft_check_numbers(argv[i]) == 1)
+			return ("Error\n");
 		num = ft_atol(argv[i]);
-		ft_insert_data(&head, num);
+		if (num > INT_MAX || num < INT_MIN)
+			write(2, "Error\n", 6);
+		//Insert value into list
+		ft_insert_data(&stack_a, num);
+		//check for duplicates in list
+		if (ft_check_duplicates(&stack_a) == 1)
+		{
+			ft_stack_dealloc(&stack_a);
+			write(2, "Error\n", 6);
+		}
+		//check for sort numbers in list
+		if (ft_check_sorted(&stack_a) == 1)
+		{
+			ft_stack_dealloc(&stack_a);
+			write(2, "Error\n", 6);
+		}
 		i++;
 	}
-	//print_stack(head);
-	if (ft_check_duplicates(&head) == 1 || ft_check_numbers(&head) == 1 || ft_check_sorted(&head) == 1)
-	{
-		ft_stack_dealloc(&head, &tail);
-		write(1, "Error\n", 6);
-	}
-	return (head);
 }
 
 t_node	ft_stack_b_init(t_node **stack_a)

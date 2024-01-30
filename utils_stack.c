@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/29 12:57:53 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/30 01:07:56 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ int	ft_stack_size(t_node **head)
 	return (count);
 }
 
-t_node	ft_last_node(t_node *head)
+t_node	*ft_last_node(t_node *head)
 {
 	t_node	*tmp;
 
 	tmp = head;
 	while (tmp != NULL)
 		tmp = tmp->next;
-	return (*tmp);
+	return (tmp);
 }
 
 //Function to check which algorithm to use based on stack size

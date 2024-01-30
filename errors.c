@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/29 14:06:55 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/30 01:08:03 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@
 
 int	ft_check_numbers(char *nbr)
 {
-	if (!(*nbr == '+' || *nbr == '-' || (*nbr >= '0' && *nbr <= '9')))
+	if (!(*nbr == '+' || *nbr == '-' || (*nbr >= '0' && *nbr <= '9')))//check for sign or digit 
 		return (1);
-	if ((*nbr == '+' || *nbr == '-') && !(nbr[1] >= '0' && nbr[1] <= '9'))
+	if ((*nbr == '+' || *nbr == '-') && !(nbr[1] >= '0' && nbr[1] <= '9'))//check for digit after sign
 		return (1);
 	while (*nbr++)
 	{
-		if (!(*nbr >= '0' && *nbr <= '9'))
+		if (!(*nbr >= '0' && *nbr <= '9'))//check for the rest of characters in string
 			return (1);
 	}
-	return (0);
+	return (0);//is a valid integer
 }
 
 int	ft_check_sorted(char **argv)
