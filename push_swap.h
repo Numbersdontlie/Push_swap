@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 01:08:00 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:55:04 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_swap(t_node **head);
  * @param **head: the pointer to the head of the list
  * @return void
 **/
-void	ft_rotate(t_node **head, t_node **tail);
+void	ft_rotate(t_node **stack);
 
 /**
  * @brief reverse the stack.
@@ -163,7 +163,7 @@ void	ft_insert_data(t_node **stack, int num);
  * @param **head: the pointer to the head of the list
  * @return 1 for false, 0 for true
 **/
-int		ft_check_numbers(char **argv);
+int		ft_check_numbers(char *argv);
 
 /**
  * @brief check if the list is already sorted
@@ -173,7 +173,7 @@ int		ft_check_numbers(char **argv);
  * @param **head: the pointer to the head of the list
  * @return 1 for false, 0 for true
 **/
-int		ft_check_sorted(char **argv);
+int		ft_check_sorted(t_node *stack);
 
 /**
  * @brief check for duplicates
@@ -184,7 +184,7 @@ int		ft_check_sorted(char **argv);
  * @param **head: the pointer to the head of the list
  * @return 1 for false, 0 for true
 **/
-int		ft_check_duplicates(char **argv);
+int		ft_check_duplicates(t_node *stack);
 
 /**
  * @brief initialize the stack_a
@@ -196,7 +196,7 @@ int		ft_check_duplicates(char **argv);
  * @param **argv: the arguments received by the program
  * @return *head: a pointer to the head of the list
 **/
-void	*ft_stack_a_init(t_node **stack_a, char **argv);
+void	ft_stack_a_init(t_node **stack_a, char **argv);
 
 /**
  * @brief initialize the stack_b
@@ -207,7 +207,7 @@ void	*ft_stack_a_init(t_node **stack_a, char **argv);
  * @param **stack_a: the stack_a
  * @return *head: a pointer to the head of the list
 **/
-t_node	ft_stack_b_init(t_node **stack_a);
+void	ft_stack_b_init(t_node **stack_a);
 
 //Utils of stack
 /**
@@ -244,7 +244,7 @@ void  print_stack(t_node *root);
  * @param head: the head of the list
  * @return the last node of the list
 **/
-t_node	*ft_last_node(t_node *head);
+t_node	ft_last_node(t_node *head);
 
 //Min and Max nodes (ToDo)
 
@@ -263,13 +263,33 @@ t_node	*ft_last_node(t_node *head);
 int	ft_atol(const char *nptr);
 
 /**
- * @brief check the data type
+ * @brief sort a small stack
  * 
- * This function check for integers data type
+ * This function sort a stack of size 3
  * 
- * @param c: the number to check
- * @return True or False
+ * @param c: the stack to sort
+ * @return void
 **/
-int	ft_isdigit(int c);
+void	ft_sort_stack_3(t_node *stack);
+
+/**
+ * @brief sort a small stack
+ * 
+ * This function sort a stack of size 5
+ * 
+ * @param c: the stack to sort
+ * @return void
+**/
+void	ft_sort_stack_5(t_node *stack);
+
+/**
+ * @brief sort a big stack
+ * 
+ * This function sort a big stack (size more than 5)
+ * 
+ * @param c: the stack to sort
+ * @return void
+**/
+void	ft_sort_stack_big(t_node *stack);
 
 #endif

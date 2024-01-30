@@ -4,7 +4,7 @@ RESET=\033[0m
 
 NAME = push_swap
 
-SRCS = ft_nodes.c init_stack.c main.c movements.c utils_stack.c utils.c
+SRCS = init_stack.c main.c movements.c utils_stack.c utils.c errors.c
 
 OBJS = ${SRCS:.c=.o}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 01:08:03 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:49:28 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,44 @@ int	ft_check_numbers(char *nbr)
 	return (0);//is a valid integer
 }
 
-int	ft_check_sorted(char **argv)
+//Function to check if the list is already sorted
+int	ft_check_sorted(t_node *stack)
+{
+	t_node	*tmp;//counter
+
+	tmp = stack;//init at head
+	while (tmp != NULL)//iterate in list
+	{
+		if (tmp->value > tmp->next->value)//check if next value is lower than previous
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+int	ft_check_duplicates(t_node *head)
+{
+	t_node	*tmp;//node to iterate
+	t_node	*num;//node to compare number
+
+	if (head == NULL)//check for empty list
+		return (0);
+	tmp = head;//init at head
+	while (tmp != NULL)//to iterate the list
+	{
+		num = tmp->next;//init at next node
+		while (num != NULL)//iterate through the list
+		{
+			if(tmp->value == num->value)//compare tmp value with value of node that come after it
+				return (1);
+			num = num->next;//step of iteration for num compare
+		}
+		tmp = tmp->next;//step of iteration for tmp
+	}
+	return (0);//return 0 if no duplicates where found
+}
+/*
+int	ft_check_sorted(t_node **stack)
 {
 	int	i;
 
@@ -69,4 +106,4 @@ int	ft_check_duplicates(char **argv)
 		i++;
 	}
 	return (0);//return 0 if no duplicates where found
-}
+}*/

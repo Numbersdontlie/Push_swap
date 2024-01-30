@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 01:07:53 by luifer           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:40:03 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_insert_data(t_node **stack, int num)
 	t_node	*head;
 	t_node	*tail;
 
+	tail = NULL;
 	node = malloc(sizeof(t_node));
 	if (node == NULL)//check fail of allocation
 		exit (EXIT_FAILURE);
@@ -43,7 +44,7 @@ void	ft_insert_data(t_node **stack, int num)
 	else
 	{
 		node->value = num;//assign value to node
-		tail = ft_last_node(&head);//find the tail
+		*tail = ft_last_node(*stack);//find the tail
 		node->prev = tail;//assign tail as prev to node
 		node->next = NULL;//assign next as null, since is the new tail
 		tail->next = node;//assign next to the previous tail
@@ -51,42 +52,35 @@ void	ft_insert_data(t_node **stack, int num)
 	}
 }
 
-void	*ft_stack_a_init(t_node **stack_a, char **argv)
+void	ft_stack_a_init(t_node **stack_a, char **argv)
 {
-	t_node	*head;
-	t_node	*tail;
 	int		i;
 	long	num;
  
 	i = 1;
-	head = NULL;
-	tail = NULL;
 	while(argv[i])
 	{
-		if (ft_check_numbers(argv[i]) == 1)
-			return ("Error\n");
+		if (ft_check_numbers(&argv[i]) == 1)
+			return ;
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			write(2, "Error\n", 6);
-		//Insert value into list
-		ft_insert_data(&stack_a, num);
-		//check for duplicates in list
-		if (ft_check_duplicates(&stack_a) == 1)
+		ft_insert_data(stack_a, num);
+		if (ft_check_duplicates(stack_a) == 1)
 		{
-			ft_stack_dealloc(&stack_a);
+			ft_stack_dealloc(stack_a);
 			write(2, "Error\n", 6);
 		}
-		//check for sort numbers in list
-		if (ft_check_sorted(&stack_a) == 1)
+		if (ft_check_sorted(stack_a) == 1)
 		{
-			ft_stack_dealloc(&stack_a);
+			ft_stack_dealloc(stack_a);
 			write(2, "Error\n", 6);
 		}
 		i++;
 	}
 }
 
-t_node	ft_stack_b_init(t_node **stack_a)
+void	ft_stack_b_init(t_node **stack_a)
 {
 	t_node	*head;
 	//t_node	*tail;
@@ -100,7 +94,7 @@ t_node	ft_stack_b_init(t_node **stack_a)
 		ft_insert_data(&head, 0);
 		i++;
 	}
-	return (*head);
+	//return (*head);
 }
 
 void  print_stack(t_node *root)

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/29 13:10:56 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:59:33 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	if (argc > 1)
 	{
-		*stack_a = ft_stack_a_init(argv);
+		ft_stack_a_init(stack_a, argv);
 	}
 	return (0);
 	//stack_b = NULL;
