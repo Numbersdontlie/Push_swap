@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 17:55:04 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:30:06 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
+//# include <bool.h>
 
 //Structure of my node//
 typedef struct	s_node
@@ -181,10 +182,11 @@ int		ft_check_sorted(t_node *stack);
  * This function checks if there are duplicated parameters
  * in the list
  * 
- * @param **head: the pointer to the head of the list
+ * @param *stack: the pointer to the head of the list
+ * @param num: the value to compare if number already exist
  * @return 1 for false, 0 for true
 **/
-int		ft_check_duplicates(t_node *stack);
+int		ft_check_duplicates(t_node *stack, int num);
 
 /**
  * @brief initialize the stack_a

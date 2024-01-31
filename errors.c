@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 18:42:42 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:30:08 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,20 @@ int	ft_check_sorted(t_node *stack)
 	return (1);
 }
 
-int	ft_check_duplicates(t_node *head)
+int	ft_check_duplicates(t_node *head, int num)
 {
 	t_node	*tmp;//node to iterate
-	t_node	*num;//node to compare number
 
 	if (head == NULL)//check for empty list
 		return (0);
 	tmp = head;//init at head
-	while (tmp != NULL)//to iterate the list
+	while (tmp != NULL)//iterate the list
 	{
-		num = tmp->next;//init at next node
-		while (num != NULL)//iterate through the list
-		{
-			if(tmp->value == num->value)//compare tmp value with value of node that come after it
-				return (1);
-			num = num->next;//step of iteration for num compare
-		}
+		if(tmp->value == num)//compare tmp value with value of num
+			return (1);
 		tmp = tmp->next;//step of iteration for tmp
 	}
-	return (0);//return 0 if no duplicates where found
+	return (0);
 }
 /*
 int	ft_check_sorted(t_node **stack)

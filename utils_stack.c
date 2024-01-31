@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 20:59:58 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:30:03 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,4 @@ void	router(t_node *head)
 		ft_sort_stack_5(head);//ToDo. Should check for size 4?
 	else if (len > 10)
 		ft_sort_stack_big(head);//ToDo
-}
-
-t_node	ft_find_high(t_node *stack)
-{
-	t_node	*tmp;
-	t_node	*high_node;
-	int		high;
-
-	tmp = stack;
-	high = 0;
-	while (tmp->next != NULL)
-	{
-		if (tmp->value > high)
-		{
-			high = tmp->value;
-			high_node = tmp;
-		}
-		tmp = tmp->next;
-	}
-	return (*high_node);
 }

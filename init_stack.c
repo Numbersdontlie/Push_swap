@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 21:00:21 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:30:10 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ void	ft_stack_a_init(t_node **stack_a, char **argv)
 	i = 1;
 	while(argv[i])
 	{
-		if (ft_check_numbers(&argv[i]) == 1)
+		if (ft_check_numbers(&argv[i]) == 1)//check for numbers
 			return ;
 		num = ft_atol(argv[i]);
-		if (num > INT_MAX || num < INT_MIN)
+		if (num > INT_MAX || num < INT_MIN)//check for overflow
 			write(2, "Error\n", 6);
-		ft_insert_data(stack_a, num);
-		if (ft_check_duplicates(stack_a) == 1)
+		if (ft_check_duplicates(stack_a, num) == 1)//check for duplicates
 		{
 			ft_stack_dealloc(stack_a);
 			write(2, "Error\n", 6);
 		}
-		if (ft_check_sorted(stack_a) == 1)
+		if (ft_check_sorted(stack_a) == 1)//check if stack is already sorted
 		{
 			ft_stack_dealloc(stack_a);
 			write(2, "Error\n", 6);
 		}
+		ft_insert_data(stack_a, num);//insert after all the check are ok
 		i++;
 	}
 }

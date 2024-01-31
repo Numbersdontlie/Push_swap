@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 17:49:32 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:29:57 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,39 @@ void	ft_swap(t_node **stack)
 {
 	t_node	*tmp;
 
+	if (*stack == NULL || ft_stack_size(stack) == 1)//check for empty or just one element in list
+		return ;
 	tmp = (*stack)->next;
 	(*stack)->prev = tmp;
 	(*stack)->next = tmp->next;
 	tmp->prev = NULL;
 	tmp->next = *stack;
 	stack = &tmp;
-	if (*stack == NULL || ft_stack_size(stack) == 1)//check for empty or just one element in list
-		return ;
-	//free(tmp)?;
+}
+
+void	sa(t_node **stack_a, bool chequea)
+{
+	ft_swap(stack_a);
+	if (chequea == 0)
+		write(1, "sa\n", 3);
+}
+
+void	sb(t_node **stack_b, bool chequea)
+{
+	ft_swap(stack_b);
+	if (chequea == 0)
+		write(1, "sb\n", 3);
+}
+
+void	ss(t_node **stack_a, t_node **stack_b, bool chequea)
+{
+	ft_swap(stack_a);
+	ft_swap(stack_b);
+	if (chequea == 0)
+	{
+		write(1, "sa\n", 3);
+		write(1, "sb\n", 3);
+	}
 }
 //To swap both stacks use the t_stacks structure
 
