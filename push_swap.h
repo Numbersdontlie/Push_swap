@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/31 11:30:06 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/01 10:40:56 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
-//# include <bool.h>
+# include <stdbool.h>
 
 //Structure of my node//
 typedef struct	s_node
@@ -109,7 +109,7 @@ void	ft_rotate(t_node **stack);
  * @param **tail: the pointer to the tail of the list
  * @return void
 **/
-void	ft_reverse_rotate(t_node **head, t_node **tail);
+void	ft_reverse_rotate(t_node **stack);
 
 /**
  * @brief push the stack.
@@ -120,7 +120,6 @@ void	ft_reverse_rotate(t_node **head, t_node **tail);
  * sent, will update the head pointer.
  * 
  * @param **head: the pointer to the head of the list
- * @param **tail: the pointer to the tail of the list
  * @return void
 **/
 void	ft_push(t_node **head_a, t_node **head_b);
