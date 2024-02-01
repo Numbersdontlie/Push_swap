@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/31 11:29:57 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/01 07:31:22 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,20 @@ void	ft_rotate(t_node **stack)
 	else
 		return ;
 	//free(tmp)?;
+}
+
+void	ra(t_node **stack_a, bool chequea)
+{
+	ft_rotate(stack_a);
+	if (chequea == 0)
+		write(1, "ra\n", 3);
+}
+
+void	rb(t_node **stack_b, bool chequea)
+{
+	ft_rotate(stack_b);
+	if (chequea == 0)
+		write(1, "rb\n", 3);
 }
 //To rotate both stacks use the t_stacks structure
 
