@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/01 10:40:56 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:08:31 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,7 @@ int	ft_atol(const char *nptr);
  * @param c: the stack to sort
  * @return void
 **/
-void	ft_sort_stack_3(t_node *stack);
+void	ft_sort_stack_3(t_node **stack);
 
 /**
  * @brief sort a small stack
@@ -281,7 +281,7 @@ void	ft_sort_stack_3(t_node *stack);
  * @param c: the stack to sort
  * @return void
 **/
-void	ft_sort_stack_5(t_node *stack);
+void	ft_sort_stack_5(t_node **stack);
 
 /**
  * @brief sort a big stack
@@ -291,6 +291,6 @@ void	ft_sort_stack_5(t_node *stack);
  * @param c: the stack to sort
  * @return void
 **/
-void	ft_sort_stack_big(t_node *stack);
+void	ft_sort_stack_big(t_node **stack);
 
 #endif
