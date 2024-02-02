@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/31 11:30:08 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/02 15:22:01 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,47 @@ int	ft_check_numbers(char *nbr)
 	return (0);//is a valid integer
 }
 
+int	ft_check_sorted(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])//iterate in list before reaching the end of list
+	{
+		if (argv[i] > argv[i + 1])//check if next value is lower than previous
+			return (0);//is not sorted
+		i++;
+	}
+	return (1);//is already sorted
+}
+
+int	ft_check_duplicates(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])//to iterate the list
+	{
+		j = 2;
+		while (argv[j])//iterate through the args
+		{
+			if(argv[i] == argv[j])//compare tmp value with value of node that come after it
+				return (1);//there are duplicates
+			j++;//step of iteration for num compare
+		}
+		i++;
+	}
+	return (0);//return 0 if no duplicates where found
+}
+
+void	error_handle(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+/*
 //Function to check if the list is already sorted
 int	ft_check_sorted(t_node *stack)
 {
@@ -45,10 +86,10 @@ int	ft_check_sorted(t_node *stack)
 	while (tmp != NULL)//iterate in list
 	{
 		if (tmp->value > tmp->next->value)//check if next value is lower than previous
-			return (0);
+			return (0);//not sorted
 		tmp = tmp->next;
 	}
-	return (1);
+	return (1);//is sorted
 }
 
 int	ft_check_duplicates(t_node *head, int num)
@@ -61,43 +102,8 @@ int	ft_check_duplicates(t_node *head, int num)
 	while (tmp != NULL)//iterate the list
 	{
 		if(tmp->value == num)//compare tmp value with value of num
-			return (1);
+			return (1);//is repeated
 		tmp = tmp->next;//step of iteration for tmp
 	}
-	return (0);
-}
-/*
-int	ft_check_sorted(t_node **stack)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i] != '\0')//iterate in list before reaching the end of list
-	{
-		if (argv[i] > argv[i + 1])//check if next value is lower than previous
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-
-int	ft_check_duplicates(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i] != '\0')//to iterate the list
-	{
-		j = 2;
-		while (argv[j] != '\0')//iterate through the args
-		{
-			if(argv[i] == argv[j])//compare tmp value with value of node that come after it
-				return (1);
-			j++;//step of iteration for num compare
-		}
-		i++;
-	}
-	return (0);//return 0 if no duplicates where found
+	return (0);//no duplicates
 }*/

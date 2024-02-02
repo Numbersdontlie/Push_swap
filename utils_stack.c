@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/01 10:48:03 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:30:02 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ t_node	ft_last_node(t_node *stack)
 	while (tmp != NULL)
 		tmp = tmp->next;
 	return (*tmp);
+}
+
+t_node	ft_create_node(int num)
+{
+	t_node	*node;
+
+	node = malloc(sizeof(t_node));
+	if (node == NULL)
+		return ;
+	node->value = num;
+	node->next = NULL;
+	return (*node);
 }
 
 //Function to check which algorithm to use based on stack size

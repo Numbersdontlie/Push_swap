@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/31 11:30:10 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/02 15:25:43 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,15 @@ void	ft_insert_data(t_node **stack, int num)
 {
 	t_node	*node;
 	t_node	*head;
-	t_node	*tail;
 
-	tail = NULL;
 	node = malloc(sizeof(t_node));
 	if (node == NULL)//check fail of allocation
 		exit (EXIT_FAILURE);
-	if (*stack == NULL)//check if stack is empty to define name of the stack and how to pass it
+	if (*stack == NULL)//check if stack is empty
 	{
 		node->value = num;
-		node->prev = NULL;
 		node->next = NULL;
 		head = node;
-		tail = node;
 	}
 	else
 	{

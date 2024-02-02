@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/01 15:08:31 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:20:03 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,45 +33,12 @@
 typedef struct	s_node
 {
 	int				value;//value of the node
-	int				order_idx;//index of the value when stack is sorted
-	int				list_idex;//current index of the value while unsorted
 	int				exit_cost;//number of moves to exit stack
-	int				target_cost;//number of moves to a sorted position in other stack
-	int				optimized;//check if double moves in stacks are allowed
-	int				priority;//cost of sorting each value on a particular stack, so to choose the cheapest
+	int				price;//sum of exit cost + best next friend
+	bool			above_below_avg;//check if value is above the average 
 	struct s_node	*next;//next node
-	struct s_node	*prev;//prev node
+	struct s_node	*target_node;//target node in the other stack
 }	t_node;
-
-/*typedef struct	t_list
-{
-	struct	*head;
-	struct	*tail;
-}	t_list;*/
-
-//this structure help to reduce the # of parameters when passing 2 stack to a function
-typedef struct	s_stacks
-{
-	struct s_node **stack_a;
-	struct s_node **stack_b;
-}	t_stacks;
-
-//this structure helps to keep track of some of the handy 
-//details we'll need when sorting 
-typedef struct	s_node_details
-{
-	int	pos;
-	int	value;
-	struct s_node	*node;
-}	t_node_details;
-
-//This struct help to monitor nodes with max and min
-typedef struct	s_node_data
-{
-	t_node_details *min;
-	t_node_details *mid;
-	t_node_details *max;
-}	t_details;
 
 //Error handler (ToDo)
 
