@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/03 00:44:23 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/03 23:48:22 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,42 @@ void	router(t_node *stack)
 		ft_sort_stack_5(stack);//ToDo. Should check for size 4?
 	else if (len > 10)
 		ft_sort_stack_big(stack);//ToDo
+}
+//Function to calculate the average in the program
+double	ft_average(t_node **stack)
+{
+	t_node	*tmp;
+	int		sum;
+	int		n;
+	int		avg;
+
+	tmp = *stack;
+	sum = 0;
+	n = 0;
+	while (tmp->next != NULL)
+	{
+		sum = sum + tmp->value;
+		n++;
+		tmp = tmp->next;
+	}
+	avg = sum / n;
+	return (avg);
+}
+
+//Function to check if the value is above or below the avg
+void	ft_above_avg(t_node *stack)
+{
+	t_node	*tmp;
+	double	avg;
+
+	tmp = stack;
+	avg = ft_average(&stack);
+	while (tmp->next != NULL)
+	{
+		if (tmp->value > avg)
+			tmp->above_avg = true;
+		else
+			tmp->above_avg = false;
+		tmp = tmp->next;
+	}
 }
