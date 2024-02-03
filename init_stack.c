@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/02 15:25:43 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:25:55 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,59 +23,47 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-void	ft_insert_data(t_node **stack, int num)
+t_node	ft_insert_data(t_node **stack, t_node *node)
 {
-	t_node	*node;
-	t_node	*head;
+	t_node	*tmp;
 
-	node = malloc(sizeof(t_node));
-	if (node == NULL)//check fail of allocation
-		exit (EXIT_FAILURE);
+	if (stack == NULL || node == NULL)//check fail of allocation
+		return ;
 	if (*stack == NULL)//check if stack is empty
 	{
-		node->value = num;
-		node->next = NULL;
-		head = node;
+		stack = node; //if empty make node the head
+		return ;
 	}
-	else
-	{
-		node->value = num;//assign value to node
-		*tail = ft_last_node(*stack);//find the tail
-		node->prev = tail;//assign tail as prev to node
-		node->next = NULL;//assign next as null, since is the new tail
-		tail->next = node;//assign next to the previous tail
-		tail = node;//assign new tail (the node created)
-	}
+	tmp = *stack;//init at head
+	while (tmp->next != NULL)//iterate through list
+		tmp = tmp->next;
+	tmp->next = node;//add node at the end of list
 }
 
-void	ft_stack_a_init(t_node **stack_a, char **argv)
+
+
+void	ft_stack_a_init(char **argv)
 {
 	int		i;
 	long	num;
+	t_node	*stack_a;
+	t_node	*tmp;
  
 	i = 1;
+	if (ft_check_numbers(argv) == 1 || ft_check_duplicates(argv) == 1 || ft_check_sorted(argv) == 1)
+		error_handle();
 	while(argv[i])
 	{
-		if (ft_check_numbers(&argv[i]) == 1)//check for numbers
-			return ;
+		
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)//check for overflow
-			write(2, "Error\n", 6);
-		if (ft_check_duplicates(stack_a, num) == 1)//check for duplicates
-		{
-			ft_stack_dealloc(stack_a);
-			write(2, "Error\n", 6);
-		}
-		if (ft_check_sorted(stack_a) == 1)//check if stack is already sorted
-		{
-			ft_stack_dealloc(stack_a);
-			write(2, "Error\n", 6);
-		}
-		ft_insert_data(stack_a, num);//insert after all the check are ok
+			error_handle();
+		tmp = ft_create_node(num);
+		ft_insert_data(stack_a, tmp);//insert after all the check are ok
 		i++;
 	}
 }
-
+/*
 void	ft_stack_b_init(t_node **stack_a)
 {
 	t_node	*head;
@@ -104,3 +92,4 @@ void  print_stack(t_node *root)
         root = root -> next;
     }
 }
+*/

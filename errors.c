@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/02 15:22:01 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:26:02 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@
 
 #include "push_swap.h"
 
-int	ft_check_numbers(char *nbr)
+int	ft_check_numbers(char **argv)
 {
-	if (!(*nbr == '+' || *nbr == '-' || (*nbr >= '0' && *nbr <= '9')))//check for sign or digit 
+	int	i;
+
+	i = 1;
+	if (!(argv[i] == '+' || argv[i] == '-' || (argv[i] >= '0' && argv[i] <= '9')))//check for sign or digit 
 		return (1);
-	if ((*nbr == '+' || *nbr == '-') && !(nbr[1] >= '0' && nbr[1] <= '9'))//check for digit after sign
+	if ((argv[i] == '+' || argv[i] == '-') && !(argv[i][1] >= '0' && argv[i][1] <= '9'))//check for digit after sign
 		return (1);
-	while (*nbr++)
+	while (argv[i])
 	{
-		if (!(*nbr >= '0' && *nbr <= '9'))//check for the rest of characters in string
+		if (!(argv[i] >= '0' && argv[i] <= '9'))//check for the rest of characters in string
 			return (1);
+		i++;
 	}
 	return (0);//is a valid integer
 }
@@ -40,7 +44,7 @@ int	ft_check_sorted(char **argv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])//iterate in list before reaching the end of list
 	{
 		if (argv[i] > argv[i + 1])//check if next value is lower than previous
@@ -54,14 +58,20 @@ int	ft_check_duplicates(char **argv)
 {
 	int	i;
 	int	j;
+	int	num1;
+	int	num2;
 
+	num1 = 0;
+	num2 = 0;
 	i = 1;
 	while (argv[i])//to iterate the list
 	{
 		j = 2;
 		while (argv[j])//iterate through the args
 		{
-			if(argv[i] == argv[j])//compare tmp value with value of node that come after it
+			num1 = ft_atol(argv[i]);
+			num2 = ft_atol(argv[j]);
+			if(num1 == num2)//compare tmp value with value of node that come after it
 				return (1);//there are duplicates
 			j++;//step of iteration for num compare
 		}

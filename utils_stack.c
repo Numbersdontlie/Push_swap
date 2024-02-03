@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/02 15:30:02 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:44:23 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@
 void	ft_stack_dealloc(t_node **stack)
 {
 	t_node	*tmp;//counter
+	t_node	*aux;
 
 	if (stack == NULL)//check if list is empty already
 		return ;
-	tmp = *stack;//init at head
 	while (tmp->next != NULL)//iterate until last element of list
 	{
-		tmp = tmp->next;//move 1 step forward
-		free(tmp->prev);//free the previous node
+		aux = *stack;
+		tmp = (*stack)->next;//init at head
+		free(aux);//free the previous node
 	}
-	free(tmp);//free the last element of the list
 	*stack = NULL;//set head(stack) to null
 }
 
