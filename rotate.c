@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:07 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/01 11:19:40 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:30:33 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,33 @@
 //ROTATE -> ra, rb, rr
 void	ft_rotate(t_node **stack)
 {
-	t_node *tmp;
-	t_node	*tail;
+	t_node	*tmp;
+	t_node	*last;
 
-	tail = NULL;
-	if (ft_stack_size(stack) > 3)
-	{
-		tmp = (*stack)->next;
-		*tail = ft_last_node(*stack);
-		(*stack)->prev = tail;
-		(*stack)->next = NULL;
-		tmp->prev = NULL;
-		tail->next = *stack;
-		tail = *stack;
-		stack = &((*stack)->next);
-	}
-	else
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	//free(tmp)?;
+	*last = ft_last_node(*stack);//find last node
+	tmp = (*stack)->next;//save the head for later
+	last->next = *stack;//point the last to the head
+	(*stack)->next = NULL;//point next of head to pointer (last one)
+	*stack = tmp;//assign the new head
 }
 
-void	ra(t_node **stack_a, bool chequea)
+void	ra(t_node **stack_a)
 {
 	ft_rotate(stack_a);
-	if (chequea == 0)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_node **stack_b, bool chequea)
+void	rb(t_node **stack_b)
 {
 	ft_rotate(stack_b);
-	if (chequea == 0)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_node **stack_a, t_node **stack_b, bool chequea)
+void	rr(t_node **stack_a, t_node **stack_b)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-	if (chequea == 0)
 		write(1, "rr\n", 3);
 }

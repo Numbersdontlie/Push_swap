@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/03 23:40:20 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 00:28:33 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int		ft_check_duplicates(char **argv);
  * @param **argv: the arguments received by the program
  * @return *head: a pointer to the head of the list
 **/
-void	ft_stack_a_init(char **argv);
+void	ft_stack_init(char **argv);
 
 /**
  * @brief initialize the stack_b
@@ -215,6 +215,8 @@ void  print_stack(t_node *root);
 t_node	ft_last_node(t_node *head);
 
 //Min and Max nodes (ToDo)
+t_node	*ft_find_low(t_node *stack);
+t_node	*ft_find_high(t_node *stack);
 
 //Argv split (ToDo)
 
@@ -243,12 +245,24 @@ void	ft_sort_stack_3(t_node **stack);
 /**
  * @brief sort a small stack
  * 
- * This function sort a stack of size 5
+ * This function sort a stack of size 4
  * 
- * @param c: the stack to sort
+ * @param stack_a: the stack to sort
+ * @param stack_b: the auxiliary stack to help to sort
  * @return void
 **/
-void	ft_sort_stack_5(t_node **stack);
+void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b);
+
+/**
+ * @brief sort a small stack
+ * 
+ * This function sort a stack of size 5
+ * 
+ * @param stack_a: the stack to sort
+ * @param stack_b: the auxiliary stack to help to sort
+ * @return void
+**/
+void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b);
 
 /**
  * @brief sort a big stack
@@ -259,5 +273,18 @@ void	ft_sort_stack_5(t_node **stack);
  * @return void
 **/
 void	ft_sort_stack_big(t_node **stack);
+
+/**
+ * @brief make the 1st movements to sort big stacks
+ * 
+ * This function will send the number below the average to the 
+ * stack_b, the ones above the avg will be send to the tail
+ * of the stack_a
+ * 
+ * @param stack_a: the stack with initial numbers
+ * @param stack_b: the empty stack to use as aux stack
+ * @return void
+**/
+void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 
 #endif

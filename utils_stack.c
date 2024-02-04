@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/03 23:48:22 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/04 23:32:30 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,6 @@ int	ft_stack_size(t_node **stack)
 	return (count);
 }
 
-t_node	ft_last_node(t_node *stack)
-{
-	t_node	*tmp;
-
-	tmp = stack;
-	while (tmp != NULL)
-		tmp = tmp->next;
-	return (*tmp);
-}
-
-t_node	ft_create_node(int num)
-{
-	t_node	*node;
-
-	node = malloc(sizeof(t_node));
-	if (node == NULL)
-		return ;
-	node->value = num;
-	node->next = NULL;
-	return (*node);
-}
-
 //Function to check which algorithm to use based on stack size
 void	router(t_node *stack)
 {
@@ -91,20 +69,19 @@ void	router(t_node *stack)
 		ft_sort_stack_big(stack);//ToDo
 }
 //Function to calculate the average in the program
-double	ft_average(t_node **stack)
+int	ft_average(t_node *stack)
 {
 	t_node	*tmp;
-	int		sum;
+	long	sum;
 	int		n;
 	int		avg;
 
-	tmp = *stack;
+	tmp = stack;
 	sum = 0;
-	n = 0;
+	n = ft_stack_size(&stack);
 	while (tmp->next != NULL)
 	{
-		sum = sum + tmp->value;
-		n++;
+		sum += tmp->value;
 		tmp = tmp->next;
 	}
 	avg = sum / n;

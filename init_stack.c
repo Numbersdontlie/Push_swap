@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/03 00:25:55 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/04 23:33:07 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ t_node	ft_insert_data(t_node **stack, t_node *node)
 	tmp->next = node;//add node at the end of list
 }
 
-
-
-void	ft_stack_a_init(char **argv)
+void	ft_stack_init(char **argv)
 {
 	int		i;
 	long	num;
@@ -63,24 +61,8 @@ void	ft_stack_a_init(char **argv)
 		i++;
 	}
 }
+
 /*
-void	ft_stack_b_init(t_node **stack_a)
-{
-	t_node	*head;
-	//t_node	*tail;
-	int	i;
-	int	n;
-
-	i = 0;
-	n = ft_stack_size(stack_a);
-	while (i < n - 3)
-	{
-		ft_insert_data(&head, 0);
-		i++;
-	}
-	//return (*head);
-}
-
 void  print_stack(t_node *root)
 {
     while (root != NULL)

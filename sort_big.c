@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/03 01:18:42 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/04 22:51:04 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,18 @@
 
 # include "push_swap.h"
 
+//this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
+void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
+{
+	int	avg;
 
-
+	while (ft_stack_size(*stack_a) > 3)
+	{
+		avg = ft_average(*stack_a);
+		ft_above_avg(*stack_a);
+		if ((*stack_a)->above_avg == false)
+			pb(stack_a, stack_b);
+		else
+			ra(stack_a);
+	}
+}
