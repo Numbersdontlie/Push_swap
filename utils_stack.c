@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 10:51:45 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 21:45:48 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ int	ft_stack_size(t_node **stack)
 }
 
 //Function to check which algorithm to use based on stack size
-void	router(t_node *stack)
+void	router(t_node **stack_a, t_node **stack_b)
 {
 	int	len;
 
-	len = ft_stack_size(&stack);
+	len = ft_stack_size(stack_a);
 	if (len <= 3)
-		ft_sort_stack_3(stack);//ToDo. Also check if stack_size = 2 inside this function
+		ft_sort_stack_3(stack_a);//ToDo. Also check if stack_size = 2 inside this function
 	else if (len >= 4)
-		ft_sort_stack_5(stack);//ToDo. Should check for size 4?
+		ft_sort_stack_5(stack_a, stack_b);//ToDo. Should check for size 4?
 	else if (len > 10)
-		ft_sort_stack_big(stack);//ToDo
+		ft_sort_stack_big(stack_a, stack_b);//ToDo
 }
 //Function to calculate the average in the program
 int	ft_average(t_node *stack)

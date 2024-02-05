@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/05 00:45:00 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 11:07:48 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 			ra(stack_a);
 	}
 }
-

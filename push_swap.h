@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 11:05:32 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 21:54:04 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void	ft_stack_dealloc(t_node **head);
  * @param **head: the pointer to the head of the list
  * @return count: the number of nodes in the list
 **/
-int		ft_stack_size(t_node **head);
+int		ft_stack_size(t_node *head);
 
 void  print_stack(t_node *root);
 
@@ -287,5 +287,7 @@ void	ft_sort_stack_big(t_node **stack);
  * @return void
 **/
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b);
+
+void	ft_calculate_price(t_node *stack_a, t_node *stack_b);
 
 #endif
