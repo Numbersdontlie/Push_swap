@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/04 23:32:30 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:51:45 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,21 @@ void	ft_above_avg(t_node *stack)
 		else
 			tmp->above_avg = false;
 		tmp = tmp->next;
+	}
+}
+
+//Function to assign a index to each number in my list
+void	ft_get_index(t_node *stack)
+{
+	int		i;
+
+	i = 0;
+	if (stack == NULL)
+		return ;
+	while (stack->next != NULL)
+	{
+		stack->index = i;
+		stack = stack->next;
+		i++;
 	}
 }

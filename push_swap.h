@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 00:28:33 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 11:05:32 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_node
 	int				value;//value of the node
 	int				exit_cost;//number of moves to exit stack
 	int				price;//sum of exit cost + best next friend
+	int				index;//index inside the list
 	bool			above_avg;//check if value is above the average 
 	struct s_node	*next;//next node
 	struct s_node	*target_node;//target node in the other stack
@@ -285,6 +286,6 @@ void	ft_sort_stack_big(t_node **stack);
  * @param stack_b: the empty stack to use as aux stack
  * @return void
 **/
-void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
+void	ft_push_below_avg(t_node **stack_a, t_node **stack_b);
 
 #endif

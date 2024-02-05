@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/04 22:51:04 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/05 00:45:00 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
 	int	avg;
 
-	while (ft_stack_size(*stack_a) > 3)
+	while (ft_stack_size(*stack_a) > 5)
 	{
 		avg = ft_average(*stack_a);
 		ft_above_avg(*stack_a);
@@ -36,3 +36,4 @@ void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 			ra(stack_a);
 	}
 }
+
