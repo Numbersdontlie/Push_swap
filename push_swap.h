@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 21:54:04 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:09:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_node
 {
 	int				value;//value of the node
 	int				exit_cost;//number of moves to exit stack
-	int				price;//sum of exit cost + best next friend
+	int				price;//sum of exit cost + exit cost best friend
 	int				index;//index inside the list
 	bool			above_avg;//check if value is above the average 
 	struct s_node	*next;//next node

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/05 11:07:48 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/06 17:47:03 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,28 @@
 
 # include "push_swap.h"
 
-//this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
-void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
+//Function to rotate the stack and put on top the desired number (best friend)
+void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char stack_name)
 {
-	int	avg;
-
-	while (ft_stack_size(*stack_a) > 5)
+	while (stack != stack_top)
 	{
-		avg = ft_average(*stack_a);
-		ft_above_avg(*stack_a);
-		if ((*stack_a)->above_avg == false)
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
+		if (stack_name == 'stack_a')
+		{
+			if (stack_top->above_avg == true)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (stack_name == 'stack_b')
+		{
+			if (stack_top->above_avg == true)
+				rb(stack);
+			else
+				rrb(stack);
+		}
 	}
+}
+void	ft_push_swap(t_node **stack_a, t_node **stack_b)
+{
+	
 }

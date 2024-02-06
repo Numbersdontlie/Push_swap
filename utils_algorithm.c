@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/05 22:13:46 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:51:40 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,52 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 	{
 		stack_b->price = stack_b->exit_cost + stack_b->target_node->exit_cost;//in each iteration add the cost to top in B to the cost to top in A A.K.A "target node"
 		stack_b = stack_b->next;//iterate in the list
+	}
+}
+
+//Function to recalculate the numbers each time that a value is pushed from one stack to another
+void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
+{
+	ft_find_bffo(stack_a, stack_b->value);
+	ft_above_avg(stack_a);
+	ft_above_avg(stack_a);
+	ft_calculate_price(stack_a, stack_b);
+}
+
+//Function to find the node with the less number of movements (cheapest)
+t_node	*ft_cheapest_node(t_node *stack_b)
+{
+	t_node	*best;
+	int		min;
+
+	best = NULL;//init null
+	min = INT_MAX;//init with the max int value
+	if (stack_b == NULL)//check for empty list
+		return ;
+	while (stack_b)
+	{
+		if (stack_b->price < min)//check if price is lower than min
+		{
+			min = stack_b->price;//save the new min
+			best = stack_b;//save the node
+		}
+		stack_b = stack_b->next;//iterate
+	}
+	return (stack_b);//return the node with the min value
+}
+
+//this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
+void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
+{
+	int	avg;
+
+	while (ft_stack_size(*stack_a) > 5)
+	{
+		avg = ft_average(*stack_a);
+		ft_above_avg(*stack_a);
+		if ((*stack_a)->above_avg == false)
+			pb(stack_a, stack_b);
+		else
+			ra(stack_a);
 	}
 }
