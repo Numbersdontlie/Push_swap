@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/06 12:09:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:49:18 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,10 +270,11 @@ void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b);
  * 
  * This function sort a big stack (size more than 5)
  * 
- * @param c: the stack to sort
+ * @param stack_a: the stack to sort
+ * @param stack_b: the auxiliary stack to help sort
  * @return void
 **/
-void	ft_sort_stack_big(t_node **stack);
+void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b);
 
 /**
  * @brief make the 1st movements to sort big stacks
