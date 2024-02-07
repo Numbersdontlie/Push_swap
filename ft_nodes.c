@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nodes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:43:10 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 00:28:55 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/07 12:15:00 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # include "push_swap.h"
 
-//Function to find the node with highest value in my list
 t_node	*ft_find_high(t_node *stack)
 {
 	t_node	*tmp;
@@ -42,7 +41,6 @@ t_node	*ft_find_high(t_node *stack)
 	return (high_node);
 }
 
-//Function to find the node with lowest value in my list
 t_node	*ft_find_low(t_node *stack)
 {
 	t_node	*tmp;
@@ -63,7 +61,6 @@ t_node	*ft_find_low(t_node *stack)
 	return (low_node);
 }
 
-//Function to find the last node in the list
 t_node	ft_last_node(t_node *stack)
 {
 	t_node	*tmp;
@@ -74,13 +71,6 @@ t_node	ft_last_node(t_node *stack)
 	return (*tmp);
 }
 
-//Add node to the head
-
-//Add node to the tail
-
-//check duplicates 
-
-//create nodes
 t_node	ft_create_node(int num)
 {
 	t_node	*node;
@@ -92,13 +82,3 @@ t_node	ft_create_node(int num)
 	node->next = NULL;
 	return (*node);
 }
-
-//delete nodes
-
-//last node
-
-//list size
-
-//print node
-
-//node details

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/06 17:30:40 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:07:31 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	ft_stack_dealloc(t_node **stack)
 }
 
 //Function to measure the size of the stack
-int	ft_stack_size(t_node **stack)
+int	ft_stack_size(t_node *stack)
 {
 	int		count;
 	t_node	*tmp;
 
 	count = 0;
-	tmp = *stack;
+	*tmp = *stack;
 	while (tmp->next != NULL)
 	{
 		count++;

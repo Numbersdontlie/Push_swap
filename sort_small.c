@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 00:28:29 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:37:17 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_sort_stack_3(t_node **stack)
 
 	high = ft_find_high(&stack);
 	if (*stack == high)
-		ra(stack, true);
+		ra(stack);
 	else if ((*stack)->next == high)
-		rra(stack, true);
+		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
-		sa(stack, true);
+		sa(stack);
 }
 
 void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)

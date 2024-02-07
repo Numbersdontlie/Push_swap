@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/03 00:26:02 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/07 12:07:28 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_check_duplicates(char **argv)
 	return (0);//return 0 if no duplicates where found
 }
 
-void	error_handle(void)
+void	ft_error_handle(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
