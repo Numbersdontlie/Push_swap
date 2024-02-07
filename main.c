@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/01/30 16:59:33 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:49:51 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,22 @@
 int	main(int argc, char **argv)
 {
 	t_node	**stack_a;
-	//t_node	**stack_b;
+	t_node	**stack_b;
 
+	if (argc < 2)
+		return (1);
+	if (ft_check_numbers(argv) == 1 || ft_check_duplicates(argv) == 1 || ft_check_sorted(argv) == 1)
+		error_handle();
 	stack_a = NULL;
-	if (argc > 1)
+	stack_b = NULL;
+	ft_stack_init(argv, stack_a);
+	ft_router(stack_a, stack_b);
+	ft_stack_dealloc(&stack_b);
+	ft_stack_dealloc(&stack_a);
+	return (0);
+}
+
+/*	
 	{
 		ft_stack_a_init(stack_a, argv);
 	}
@@ -51,4 +63,3 @@ int	main(int argc, char **argv)
 		}
 		return (0);
 	}*/
-}

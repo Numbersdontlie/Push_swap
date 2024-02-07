@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:07:31 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:47:13 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_stack_size(t_node *stack)
 }
 
 //Function to check which algorithm to use based on stack size
-void	router(t_node **stack_a, t_node **stack_b)
+void	ft_router(t_node **stack_a, t_node **stack_b)
 {
 	int	len;
 

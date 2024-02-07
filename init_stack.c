@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/06 17:35:37 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:31:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,19 @@ t_node	ft_insert_data(t_node **stack, t_node *node)
 	tmp->next = node;//add node at the end of list
 }
 
-void	ft_stack_init(char **argv)
+void	ft_stack_init(char **argv, t_node **stack_a)
 {
 	int		i;
 	long	num;
-	t_node	*stack_a;
 	t_node	*tmp;
  
 	i = 1;
-	if (ft_check_numbers(argv) == 1 || ft_check_duplicates(argv) == 1 || ft_check_sorted(argv) == 1)
-		error_handle();
 	while(argv[i])
 	{
-		
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)//check for overflow
 			error_handle();
-		tmp = ft_create_node(num);
+		*tmp = ft_create_node(num);
 		ft_insert_data(stack_a, tmp);//insert after all the check are ok
 		i++;
 	}

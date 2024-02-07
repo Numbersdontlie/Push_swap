@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:04:14 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:49:48 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,9 +285,10 @@ int		ft_check_duplicates(char **argv);
  * and make quality checks. It will deallocate if needed. 
  * 
  * @param **argv: the arguments received by the program
+ * @param **stack_a: the stack to initialize
  * @return void
 **/
-void	ft_stack_init(char **argv);
+void	ft_stack_init(char **argv, t_node **stack_a);
 
 /**
  * @brief check for errors and exit
@@ -298,17 +299,6 @@ void	ft_stack_init(char **argv);
  * @return void
 **/
 void	ft_error_handle(void);
-
-/**
- * @brief initialize the stack_b
- * 
- * This function initialize the stack_b empty. It will create a
- * stack of size (stack_a - 3).
- * 
- * @param **stack_a: the stack_a
- * @return *head: a pointer to the head of the list
-**/
-void	ft_stack_b_init(t_node **stack_a);
 
 //Utils of stack
 /**
@@ -570,6 +560,6 @@ int	ft_average(t_node *stack);
  * @param stack_b: stack with numbers
  * @return void
 **/
-void	router(t_node **stack_a, t_node **stack_b);
+void	ft_router(t_node **stack_a, t_node **stack_b);
 
 #endif
