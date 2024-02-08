@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:49:48 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:37:50 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ void	ft_node_init(t_node **head, t_node **tail, int num);
  * @param *node: the node to add an the end of the list
  * @return t_node
 **/
-t_node	ft_insert_data(t_node **stack, t_node *node);
+t_node	*ft_insert_data(t_node **stack, t_node *node);
 
 /**
  * @brief check if the list have only numbers
@@ -309,7 +309,6 @@ void	ft_error_handle(void);
  * memory allocated. It also set head and tail to NULL
  * 
  * @param **head: a pointer to the head of the list
- * @param **tail: a pointer to the tail of the list
  * @return void
 **/
 void	ft_stack_dealloc(t_node **head);
@@ -367,7 +366,7 @@ t_node	*ft_find_high(t_node *stack);
  * @param num: a integer number to save inside the node
  * @return the node with the stored number
 **/
-t_node	ft_create_node(int num);
+t_node	*ft_create_node(int num);
 
 //Argv split (ToDo)
 

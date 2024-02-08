@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:34:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:51:40 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:13:29 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	ft_check_numbers(char **argv)
 	int	i;
 
 	i = 1;
-	if (!(argv[i] == '+' || argv[i] == '-' || (argv[i] >= '0' && argv[i] <= '9')))//check for sign or digit 
+	if (!(*argv[i] == '+' || *argv[i] == '-' || (*argv[i] >= '0' && *argv[i] <= '9')))//check for sign or digit 
 		return (1);
-	if ((argv[i] == '+' || argv[i] == '-') && !(argv[i][1] >= '0' && argv[i][1] <= '9'))//check for digit after sign
+	if ((*argv[i] == '+' || *argv[i] == '-') && !(argv[i][1] >= '0' && argv[i][1] <= '9'))//check for digit after sign
 		return (1);
 	while (argv[i])
 	{
-		if (!(argv[i] >= '0' && argv[i] <= '9'))//check for the rest of characters in string
+		if (!(*argv[i] >= '0' && *argv[i] <= '9'))//check for the rest of characters in string
 			return (1);
 		i++;
 	}

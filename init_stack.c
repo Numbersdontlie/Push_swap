@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:31:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:39:56 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-t_node	ft_insert_data(t_node **stack, t_node *node)
+t_node	*ft_insert_data(t_node **stack, t_node *node)
 {
 	t_node	*tmp;
 
 	if (stack == NULL || node == NULL)//check fail of allocation
-		return ;
+		return (NULL);
 	if (*stack == NULL)//check if stack is empty
 	{
-		stack = node; //if empty make node the head
-		return ;
+		stack = &node; //if empty make node the head
+		return (*stack);
 	}
 	tmp = *stack;//init at head
 	while (tmp->next != NULL)//iterate through list
 		tmp = tmp->next;
 	tmp->next = node;//add node at the end of list
+	return (*stack);
 }
 
 void	ft_stack_init(char **argv, t_node **stack_a)
@@ -51,8 +52,8 @@ void	ft_stack_init(char **argv, t_node **stack_a)
 	{
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)//check for overflow
-			error_handle();
-		*tmp = ft_create_node(num);
+			ft_error_handle();
+		tmp = ft_create_node(num);
 		ft_insert_data(stack_a, tmp);//insert after all the check are ok
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:43:10 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 12:15:00 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:30:36 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_node	*ft_find_low(t_node *stack)
 		if (tmp->value < low)
 		{
 			low = tmp->value;
-			low_node = tmp->value;
+			low_node = tmp;
 		}
 		tmp = tmp->next;
 	}
@@ -71,14 +71,14 @@ t_node	ft_last_node(t_node *stack)
 	return (*tmp);
 }
 
-t_node	ft_create_node(int num)
+t_node	*ft_create_node(int num)
 {
 	t_node	*node;
 
 	node = malloc(sizeof(t_node));
 	if (node == NULL)
-		return ;
+		return (NULL);
 	node->value = num;
 	node->next = NULL;
-	return (*node);
+	return (node);
 }
