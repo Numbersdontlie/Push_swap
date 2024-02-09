@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/09 21:17:58 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/10 00:04:24 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,7 +495,7 @@ void	ft_cost_top(t_node *stack);
  * @param stack_a: stack with numbers already sorted where the number from B will be pushed
  * @return the node containing the best friend A.K.A the one with the less positive difference
 **/
-t_node	ft_find_bffo(t_node	**stack_a, long num);
+t_node	ft_find_bffo(t_node	*stack_a, long num);
 
 /**
  * @brief recalculate numbers after each iteration

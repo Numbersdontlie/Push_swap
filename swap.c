@@ -6,7 +6,7 @@
 /*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 00:03:05 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/09 23:20:48 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_swap(t_node **stack)
 {
 	t_node	*tmp;
 
-	if (*stack == NULL || ft_stack_size(stack) == 1)//check for empty or just one element in list
+	if (*stack == NULL || ft_stack_size(*stack) == 1)//check for empty or just one element in list
 		return ;
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;

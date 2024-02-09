@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/06 14:51:40 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 23:38:31 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_cost_top(t_node *stack)
 }
 
 //Function to find the best friend of number in stack_a
-t_node	ft_find_bffo(t_node	**stack_a, long num)
+t_node	ft_find_bffo(t_node	*stack_a, long num)
 {
 	t_node	*bffo;
 	long	count;
@@ -37,26 +37,26 @@ t_node	ft_find_bffo(t_node	**stack_a, long num)
 	t_node	*nod_tmp;
 
 	count = INT_MAX;//initialize at max value
-	nod_tmp = *stack_a;//store the head for later
-	while (*stack_a)
+	nod_tmp = NULL;
+	bffo = NULL;
+	*nod_tmp = *stack_a;//store the head for later
+	while (stack_a->next != NULL)
 	{
-		tmp = (*stack_a)->value - num;//calculate the diff between number and all values in stack a
-		if((tmp < count) && (*stack_a)->value > num)//check if the calculated value is less than count and if is greater than the number
+		tmp = stack_a->value - num;//calculate the diff between number and all values in stack a
+		if((tmp < count) && stack_a->value > num)//check if the calculated value is less than count and if is greater than the number
 		{
 			count = tmp;//save the value in count
-			bffo = *stack_a;//save the node
+			*bffo = *stack_a;//save the node
 		}
-		(*stack_a) = (*stack_a)->next;//step of iteration
+		stack_a = stack_a->next;//step of iteration
 	}
-	*stack_a = nod_tmp;//como back to the head after iteration
+	stack_a = nod_tmp;//como back to the head after iteration
 	return (*bffo);//return the node with the best friend
 }
 
 //Function to calculate the price of the movements in stack A and B
 void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 {
-	int	size;
-
 	ft_cost_top(stack_a);//set the cost to top in A
 	ft_cost_top(stack_b);//set the cost to top in B
 	while (stack_b)
@@ -84,7 +84,7 @@ t_node	*ft_cheapest_node(t_node *stack_b)
 	best = NULL;//init null
 	min = INT_MAX;//init with the max int value
 	if (stack_b == NULL)//check for empty list
-		return ;
+		return (NULL);
 	while (stack_b)
 	{
 		if (stack_b->price < min)//check if price is lower than min
@@ -94,17 +94,14 @@ t_node	*ft_cheapest_node(t_node *stack_b)
 		}
 		stack_b = stack_b->next;//iterate
 	}
-	return (stack_b);//return the node with the min value
+	return (best);//return the node with the min value
 }
 
 //this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
-	int	avg;
-
 	while (ft_stack_size(*stack_a) > 5)
 	{
-		avg = ft_average(*stack_a);
 		ft_above_avg(*stack_a);
 		if ((*stack_a)->above_avg == false)
 			pb(stack_a, stack_b);

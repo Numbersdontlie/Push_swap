@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 16:47:13 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/10 00:09:10 by luifer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_stack_size(t_node *stack)
 	t_node	*tmp;
 
 	count = 0;
+	tmp = NULL;
 	*tmp = *stack;
 	while (tmp->next != NULL)
 	{
@@ -60,7 +61,7 @@ void	ft_router(t_node **stack_a, t_node **stack_b)
 {
 	int	len;
 
-	len = ft_stack_size(stack_a);
+	len = ft_stack_size(*stack_a);
 	if (len <= 3)
 		ft_sort_stack_3(stack_a);//ToDo. Also check if stack_size = 2 inside this function
 	else if (len >= 4)
@@ -78,7 +79,7 @@ int	ft_average(t_node *stack)
 
 	tmp = stack;
 	sum = 0;
-	n = ft_stack_size(&stack);
+	n = ft_stack_size(stack);
 	while (tmp->next != NULL)
 	{
 		sum += tmp->value;
@@ -95,7 +96,7 @@ void	ft_above_avg(t_node *stack)
 	double	avg;
 
 	tmp = stack;
-	avg = ft_average(&stack);
+	avg = ft_average(stack);
 	while (tmp->next != NULL)
 	{
 		if (tmp->value > avg)
