@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/09 19:29:57 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 21:21:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
 {
 	while (*stack != stack_top)//iterate until the desired number is in the top of stack
 	{
-		if (stack_name == "stack_a")//if the stack is A
+		if (ft_strncmp(stack_name, "stack_a", 7) == 0)//if the stack is A
 		{
 			if (stack_top->above_avg == true)//check for above/below avg and move it accordingly
 				ra(stack);
 			else
 				rra(stack);
 		}
-		else if (stack_name == "stack_b")//check for above/below avg and move it accordingly
+		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for above/below avg and move it accordingly
 		{
 			if (stack_top->above_avg == true)
 				rb(stack);
@@ -56,8 +56,8 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 		stack_a = &(*stack_a)->next;//iterate
 		stack_b = &(*stack_b)->next;//iterate
 	}
-	ft_above_avg(stack_a);//update the above avg flag
-	ft_above_avg(stack_b);//update the above avg flag
+	ft_above_avg(*stack_a);//update the above avg flag
+	ft_above_avg(*stack_b);//update the above avg flag
 	ft_rotate_stack_top(stack_a, node->target_node, "stack_a");//rotate to top of the stack
 	ft_rotate_stack_top(stack_b, node, "stack_b");//rotate to top of the stack
 	pa(stack_b, stack_a);//push the number of top of B to the top of A, where should be the best friend to pair
@@ -68,7 +68,7 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*minimo;
 
-	ft_push_below_avg(*stack_a, *stack_b);//push from A to B depending if the number is below or above AVG
+	ft_push_below_avg(stack_a, stack_b);//push from A to B depending if the number is below or above AVG
 	ft_sort_stack_5(stack_a, stack_b);//sort 5 numbers remaining in A
 	while (*stack_b)//iterate in stack_b until is empty
 	{
@@ -76,7 +76,7 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 		ft_push_from_b_to_a(stack_a, stack_b);//push from B to A. In each iteration the number on top of B should be paired with the best friend in A
 	}
 	ft_above_avg(*stack_a);//recalculate above/below AVG when all the numbers are in stack A
-	minimo = ft_find_low(stack_a);//find the minimun value in the set
+	minimo = ft_find_low(*stack_a);//find the minimun value in the set
 	if (minimo->above_avg == true)//check if the minimun is above the avg and move it accordingly
 	{
 		while (*stack_a != minimo)

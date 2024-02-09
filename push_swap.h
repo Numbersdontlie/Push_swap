@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/09 19:21:56 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 21:17:58 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -560,5 +560,7 @@ int	ft_average(t_node *stack);
  * @return void
 **/
 void	ft_router(t_node **stack_a, t_node **stack_b);
+
+int	ft_strncmp(char *s1, char *s2, size_t n);
 
 #endif

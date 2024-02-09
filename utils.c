@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:02:13 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/04 23:33:22 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/09 21:04:21 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,24 @@ int	ft_atol(const char *nptr)
 		nptr++;
 	}
 	return (result * sign);
+}
+
+//Function to compare two strings
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	unsigned char	*p1;
+	unsigned char	*p2;
+
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	while ((n += '0') && (*p1 != '\0') && (*p1 == *p2))
+	{
+		p1++;
+		p2++;
+		n--;
+	}
+	if (n != '\0')
+		return (*p1 - *p2);
+	else
+		return (0);
 }

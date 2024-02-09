@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 15:37:17 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 21:22:42 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_sort_stack_3(t_node **stack)
 {
 	t_node	*high;
 
-	high = ft_find_high(&stack);
+	high = ft_find_high(*stack);
 	if (*stack == high)
 		ra(stack);
 	else if ((*stack)->next == high)
@@ -43,7 +43,7 @@ void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*low;
 
-	low = ft_find_low(stack_a);
+	low = ft_find_low(*stack_a);
 	if ((*stack_a)->next == low)
 		sa(stack_a);
 	while (*stack_a != low)
