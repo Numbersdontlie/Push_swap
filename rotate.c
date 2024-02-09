@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:07 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/04 23:30:33 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/09 18:35:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_rotate(t_node **stack)
 	t_node	*tmp;
 	t_node	*last;
 
+	last = NULL;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	*last = ft_last_node(*stack);//find last node

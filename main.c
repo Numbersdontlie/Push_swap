@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:45:31 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/08 16:41:28 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:33:53 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 		ft_error_handle();
 	stack_a = NULL;
 	stack_b = NULL;
-	ft_stack_init(argv, stack_a);
-	ft_router(stack_a, stack_b);
+	ft_stack_init(argv, &stack_a);
+	ft_router(&stack_a, &stack_b);
 	ft_stack_dealloc(&stack_b);
 	ft_stack_dealloc(&stack_a);
 	return (0);
