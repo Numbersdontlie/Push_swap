@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/08 16:37:50 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:21:56 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,7 +460,7 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b);
  * @param stack_name: the name of the stack containing the number
  * @return void
 **/
-void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char stack_name);
+void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name);
 
 /**
  * @brief push the numbers from one stack to another

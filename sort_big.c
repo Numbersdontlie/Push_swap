@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/09 18:36:10 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:29:57 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@
 # include "push_swap.h"
 
 //Function to rotate the stack and put on top the desired number (best friend)
-void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char stack_name)
+void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
 {
-	while (stack != stack_top)//iterate until the desired number is in the top of stack
+	while (*stack != stack_top)//iterate until the desired number is in the top of stack
 	{
-		if (stack_name == 'stack_a')//if the stack is A
+		if (stack_name == "stack_a")//if the stack is A
 		{
 			if (stack_top->above_avg == true)//check for above/below avg and move it accordingly
 				ra(stack);
 			else
 				rra(stack);
 		}
-		else if (stack_name == 'stack_b')//check for above/below avg and move it accordingly
+		else if (stack_name == "stack_b")//check for above/below avg and move it accordingly
 		{
 			if (stack_top->above_avg == true)
 				rb(stack);
@@ -53,8 +53,8 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 			rr(stack_a, stack_b);
 		else if (node->above_avg == false && node->target_node->above_avg == false)//if both are below average reverse rotate to make it go down until reach the top
 			rrr(stack_a, stack_b);
-		stack_a = (*stack_a)->next;//iterate
-		stack_b = (*stack_b)->next;//iterate
+		stack_a = &(*stack_a)->next;//iterate
+		stack_b = &(*stack_b)->next;//iterate
 	}
 	ft_above_avg(stack_a);//update the above avg flag
 	ft_above_avg(stack_b);//update the above avg flag
