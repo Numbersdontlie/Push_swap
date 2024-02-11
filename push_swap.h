@@ -240,9 +240,9 @@ void	ft_node_init(t_node **head, t_node **tail, int num);
  * 
  * @param **stack: the pointer to the head of the list
  * @param *node: the node to add an the end of the list
- * @return t_node
+ * @return void
 **/
-t_node	*ft_insert_data(t_node **stack, t_node *node);
+void	ft_insert_data(t_node *stack, t_node *node);
 
 /**
  * @brief check if the list have only numbers
@@ -288,7 +288,7 @@ int		ft_check_duplicates(char **argv);
  * @param **stack_a: the stack to initialize
  * @return void
 **/
-void	ft_stack_init(char **argv, t_node **stack_a);
+void	ft_stack_init(char **argv, t_node *stack_a);
 
 /**
  * @brief check for errors and exit
@@ -311,7 +311,7 @@ void	ft_error_handle(void);
  * @param **head: a pointer to the head of the list
  * @return void
 **/
-void	ft_stack_dealloc(t_node **head);
+void	ft_stack_dealloc(t_node *head);
 
 /**
  * @brief measure the size of the stack
@@ -559,7 +559,7 @@ int	ft_average(t_node *stack);
  * @param stack_b: stack with numbers
  * @return void
 **/
-void	ft_router(t_node **stack_a, t_node **stack_b);
+void	ft_router(t_node *stack_a, t_node *stack_b);
 
 int	ft_strncmp(char *s1, char *s2, size_t n);
 

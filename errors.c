@@ -28,13 +28,13 @@ int	ft_check_numbers(char **argv)
 
 	i = 1;
 	if (!(*argv[i] == '+' || *argv[i] == '-' || (*argv[i] >= '0' && *argv[i] <= '9')))//check for sign or digit 
-		return (1);
+		ft_error_handle();
 	if ((*argv[i] == '+' || *argv[i] == '-') && !(argv[i][1] >= '0' && argv[i][1] <= '9'))//check for digit after sign
-		return (1);
+		ft_error_handle();
 	while (argv[i])
 	{
 		if (!(*argv[i] >= '0' && *argv[i] <= '9'))//check for the rest of characters in string
-			return (1);
+			ft_error_handle();
 		i++;
 	}
 	return (0);//is a valid integer
@@ -51,7 +51,8 @@ int	ft_check_sorted(char **argv)
 			return (0);//is not sorted
 		i++;
 	}
-	return (1);//is already sorted
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);//is already sorted
 }
 
 int	ft_check_duplicates(char **argv)
@@ -72,7 +73,7 @@ int	ft_check_duplicates(char **argv)
 			num1 = ft_atol(argv[i]);
 			num2 = ft_atol(argv[j]);
 			if(num1 == num2)//compare tmp value with value of node that come after it
-				return (1);//there are duplicates
+				ft_error_handle();;//there are duplicates
 			j++;//step of iteration for num compare
 		}
 		i++;

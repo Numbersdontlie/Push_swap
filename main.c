@@ -15,12 +15,17 @@
 
 int	main(int argc, char **argv)
 {
-	t_node	**stack_a;
-	t_node	**stack_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 
 	if (argc < 2)
 		return (1);
-	if (ft_check_numbers(argv) == 1 || ft_check_duplicates(argv) == 1 || ft_check_sorted(argv) == 1)
+	printf("%s", "hello");
+	if (ft_check_numbers(argv) == 1)
+		ft_error_handle();
+	else if (ft_check_duplicates(argv) == 1)
+		ft_error_handle();
+	else if (ft_check_sorted(argv) == 1)
 		ft_error_handle();
 	stack_a = NULL;
 	stack_b = NULL;

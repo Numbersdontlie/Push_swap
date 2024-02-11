@@ -23,25 +23,19 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-t_node	*ft_insert_data(t_node **stack, t_node *node)
+void	ft_insert_data(t_node *stack, t_node *node)
 {
 	t_node	*tmp;
 
-	if (stack == NULL || node == NULL)//check fail of allocation
-		return (NULL);
-	if (*stack == NULL)//check if stack is empty
-	{
-		stack = &node; //if empty make node the head
-		return (*stack);
-	}
-	tmp = *stack;//init at head
+	if (stack == NULL)//check if stack is empty
+		stack = node; //if empty make node the head
+	tmp = stack;//init at head
 	while (tmp->next != NULL)//iterate through list
 		tmp = tmp->next;
 	tmp->next = node;//add node at the end of list
-	return (*stack);
 }
 
-void	ft_stack_init(char **argv, t_node **stack_a)
+void	ft_stack_init(char **argv, t_node *stack_a)
 {
 	int		i;
 	long	num;

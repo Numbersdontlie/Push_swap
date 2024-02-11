@@ -23,7 +23,7 @@
 #include "push_swap.h"
 
 //Function to deallocate the list
-void	ft_stack_dealloc(t_node **stack)
+void	ft_stack_dealloc(t_node *stack)
 {
 	t_node	*tmp;//counter
 	t_node	*aux;
@@ -32,11 +32,11 @@ void	ft_stack_dealloc(t_node **stack)
 		return ;
 	while (tmp->next != NULL)//iterate until last element of list
 	{
-		aux = *stack;
-		tmp = (*stack)->next;//init at head
+		aux = stack;
+		tmp = stack->next;//init at head
 		free(aux);//free the previous node
 	}
-	*stack = NULL;//set head(stack) to null
+	stack = NULL;//set head(stack) to null
 }
 
 //Function to measure the size of the stack
@@ -57,17 +57,17 @@ int	ft_stack_size(t_node *stack)
 }
 
 //Function to check which algorithm to use based on stack size
-void	ft_router(t_node **stack_a, t_node **stack_b)
+void	ft_router(t_node *stack_a, t_node *stack_b)
 {
 	int	len;
 
-	len = ft_stack_size(*stack_a);
+	len = ft_stack_size(stack_a);
 	if (len <= 3)
-		ft_sort_stack_3(stack_a);//ToDo. Also check if stack_size = 2 inside this function
+		ft_sort_stack_3(&stack_a);//ToDo. Also check if stack_size = 2 inside this function
 	else if (len >= 4)
-		ft_sort_stack_5(stack_a, stack_b);//ToDo. Should check for size 4?
+		ft_sort_stack_5(&stack_a, &stack_b);//ToDo. Should check for size 4?
 	else if (len > 10)
-		ft_sort_stack_big(stack_a, stack_b);//ToDo
+		ft_sort_stack_big(&stack_a, &stack_b);//ToDo
 }
 //Function to calculate the average in the program
 int	ft_average(t_node *stack)
