@@ -82,3 +82,20 @@ t_node	*ft_create_node(int num)
 	node->next = NULL;
 	return (node);
 }
+
+void	ft_add_back(t_node	**stack_a, t_node *node)
+{
+	t_node	*tmp;
+
+	if (stack_a == NULL || node == NULL)
+		return ;
+	if (*stack_a == NULL)
+	{
+		*stack_a = node;
+		return ;
+	}
+	tmp = *stack_a;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = node;
+}

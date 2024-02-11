@@ -22,7 +22,7 @@
 #include "push_swap.h"
 
 //Function to convert string to integers to receive arguments
-int	ft_atol(const char *nptr)
+int	ft_atol(char *nptr)
 {
 	int		sign;
 	long	result;
@@ -37,12 +37,17 @@ int	ft_atol(const char *nptr)
 			sign = -1;
 		nptr++;
 	}
-	result = 0;
+	if (*nptr && (*nptr < 48 || *nptr > 57))//check next after symbol is a number
+		ft_error_handle();
 	while (((*nptr >= 48) && (*nptr <= 57)))
 	{
 		result = ((result * 10) + (*nptr - 48));
 		nptr++;
 	}
+	if (*nptr && (*nptr < 48 || *nptr > 57))
+		ft_error_handle();
+	if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
+		ft_error_handle();
 	return (result * sign);
 }
 

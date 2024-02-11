@@ -20,19 +20,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (1);
-	printf("%s", "hello");
-	if (ft_check_numbers(argv) == 1)
-		ft_error_handle();
-	else if (ft_check_duplicates(argv) == 1)
-		ft_error_handle();
-	else if (ft_check_sorted(argv) == 1)
-		ft_error_handle();
+	ft_check_duplicates(argv);
 	stack_a = NULL;
 	stack_b = NULL;
-	ft_stack_init(argv, stack_a);
+	stack_a = ft_insert_data(argv);
 	ft_router(stack_a, stack_b);
-	ft_stack_dealloc(stack_b);
-	ft_stack_dealloc(stack_a);
+	ft_stack_dealloc(&stack_b);
+	ft_stack_dealloc(&stack_a);
 	return (0);
 }
 

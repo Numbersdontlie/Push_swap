@@ -23,19 +23,21 @@
 #include "push_swap.h"
 
 //Function to deallocate the list
-void	ft_stack_dealloc(t_node *stack)
+void	ft_stack_dealloc(t_node **stack)
 {
 	t_node	*tmp;//counter
 	t_node	*aux;
 
+	tmp = *stack;
 	if (stack == NULL)//check if list is empty already
 		return ;
 	while (tmp->next != NULL)//iterate until last element of list
 	{
-		aux = stack;
-		tmp = stack->next;//init at head
+		aux = tmp;
+		tmp = tmp->next;//init at head
 		free(aux);//free the previous node
 	}
+	free(tmp);
 	stack = NULL;//set head(stack) to null
 }
 

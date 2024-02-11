@@ -219,20 +219,6 @@ void	pb(t_node **stack_a, t_node **stack_b);
 
 //**STACK INITIALIZATION**//
 /**
- * @brief Initialize the node.
- * 
- * In case the linked list is empty, the function will initialize a node
- * and assign a value to node->value. It will also set the prev and next
- * pointer to NULL and will assign the head and tail to the new created 
- * node.
- * 
- * @param **head: the pointer to the head of the list
- * @param **tail: the pointer to the tail of the list
- * @return void
-**/
-void	ft_node_init(t_node **head, t_node **tail, int num);
-
-/**
  * @brief Insert data into the list.
  * 
  * This function add data to the list, the function takes a node
@@ -242,7 +228,7 @@ void	ft_node_init(t_node **head, t_node **tail, int num);
  * @param *node: the node to add an the end of the list
  * @return void
 **/
-void	ft_insert_data(t_node *stack, t_node *node);
+t_node	*ft_insert_data(char **argv);
 
 /**
  * @brief check if the list have only numbers
@@ -260,10 +246,10 @@ int		ft_check_numbers(char **argv);
  * 
  * This function checks if the parameters are already sorted
  * 
- * @param **head: the pointer to the head of the list
+ * @param *stack: the pointer to the head of the list
  * @return 1 for false, 0 for true
 **/
-int		ft_check_sorted(char **argv);
+int		ft_check_sorted(t_node *stack);
 
 /**
  * @brief check for duplicates
@@ -275,7 +261,7 @@ int		ft_check_sorted(char **argv);
  * @param num: the value to compare if number already exist
  * @return 1 for false, 0 for true
 **/
-int		ft_check_duplicates(char **argv);
+void	ft_check_duplicates(char **argv);
 
 /**
  * @brief initialize the stack_a
@@ -288,7 +274,7 @@ int		ft_check_duplicates(char **argv);
  * @param **stack_a: the stack to initialize
  * @return void
 **/
-void	ft_stack_init(char **argv, t_node *stack_a);
+t_node	*ft_insert_node(char **argv);
 
 /**
  * @brief check for errors and exit
@@ -311,7 +297,7 @@ void	ft_error_handle(void);
  * @param **head: a pointer to the head of the list
  * @return void
 **/
-void	ft_stack_dealloc(t_node *head);
+void	ft_stack_dealloc(t_node **head);
 
 /**
  * @brief measure the size of the stack
@@ -380,7 +366,7 @@ t_node	*ft_create_node(int num);
  * @param *nptr: the pointer to the argument received
  * @return result: the number already converted
 **/
-int	ft_atol(const char *nptr);
+int	ft_atol(char *nptr);
 
 /**
  * @brief sort a small stack
@@ -548,7 +534,7 @@ void	ft_above_avg(t_node *stack);
  * @param stack: stack with nodes from which the average will be calculated
  * @return int
 **/
-int	ft_average(t_node *stack);
+int		ft_average(t_node *stack);
 
 /**
  * @brief check which algorithm to launch
@@ -561,6 +547,8 @@ int	ft_average(t_node *stack);
 **/
 void	ft_router(t_node *stack_a, t_node *stack_b);
 
-int	ft_strncmp(char *s1, char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
+
+void	ft_add_back(t_node	**stack_a, t_node *node);
 
 #endif

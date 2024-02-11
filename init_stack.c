@@ -23,34 +23,37 @@
 # include "push_swap.h"
 # include <stdio.h>
 
-void	ft_insert_data(t_node *stack, t_node *node)
+t_node	*ft_insert_data(char **argv)
 {
-	t_node	*tmp;
+	t_node	*stack_a;
 
-	if (stack == NULL)//check if stack is empty
-		stack = node; //if empty make node the head
-	tmp = stack;//init at head
-	while (tmp->next != NULL)//iterate through list
-		tmp = tmp->next;
-	tmp->next = node;//add node at the end of list
+	stack_a = ft_insert_node(argv);
+	if (ft_check_sorted(stack_a) == 1)
+	{
+		ft_stack_dealloc(&stack_a);
+		exit(1);
+	}
+	return (stack_a);
 }
 
-void	ft_stack_init(char **argv, t_node *stack_a)
+t_node	*ft_insert_node(char **argv)
 {
 	int		i;
 	long	num;
 	t_node	*tmp;
+	t_node	*stack_a;
  
 	i = 1;
+	num = 0;
+	stack_a = NULL;
 	while(argv[i])
 	{
 		num = ft_atol(argv[i]);
-		if (num > INT_MAX || num < INT_MIN)//check for overflow
-			ft_error_handle();
 		tmp = ft_create_node(num);
-		ft_insert_data(stack_a, tmp);//insert after all the check are ok
+		ft_add_back(&stack_a, tmp);
 		i++;
 	}
+	return (stack_a);
 }
 
 /*
