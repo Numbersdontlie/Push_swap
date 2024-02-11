@@ -25,35 +25,29 @@
 //Function to deallocate the list
 void	ft_stack_dealloc(t_node **stack)
 {
-	t_node	*tmp;//counter
 	t_node	*aux;
 
-	tmp = *stack;
 	if (stack == NULL)//check if list is empty already
 		return ;
-	while (tmp->next != NULL)//iterate until last element of list
+	while (*stack)//iterate until last element of list
 	{
-		aux = tmp;
-		tmp = tmp->next;//init at head
-		free(aux);//free the previous node
+		aux = (*stack)->next;;//save node
+		free(*stack);
+		*stack = aux;
 	}
-	free(tmp);
-	stack = NULL;//set head(stack) to null
+	*stack = NULL;//set head(stack) to null
 }
 
 //Function to measure the size of the stack
 int	ft_stack_size(t_node *stack)
 {
 	int		count;
-	t_node	*tmp;
 
 	count = 0;
-	tmp = NULL;
-	*tmp = *stack;
-	while (tmp->next != NULL)
+	while (stack->next != NULL)
 	{
 		count++;
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	return (count);
 }
@@ -66,9 +60,9 @@ void	ft_router(t_node *stack_a, t_node *stack_b)
 	len = ft_stack_size(stack_a);
 	if (len <= 3)
 		ft_sort_stack_3(&stack_a);//ToDo. Also check if stack_size = 2 inside this function
-	else if (len >= 4)
+	else if (len > 4)
 		ft_sort_stack_5(&stack_a, &stack_b);//ToDo. Should check for size 4?
-	else if (len > 10)
+	else if (len > 5)
 		ft_sort_stack_big(&stack_a, &stack_b);//ToDo
 }
 //Function to calculate the average in the program
@@ -94,18 +88,16 @@ int	ft_average(t_node *stack)
 //Function to check if the value is above or below the avg
 void	ft_above_avg(t_node *stack)
 {
-	t_node	*tmp;
 	double	avg;
 
-	tmp = stack;
 	avg = ft_average(stack);
-	while (tmp->next != NULL)
+	while (stack->next != NULL)
 	{
-		if (tmp->value > avg)
-			tmp->above_avg = true;
+		if (stack->value > avg)
+			stack->above_avg = true;
 		else
-			tmp->above_avg = false;
-		tmp = tmp->next;
+			stack->above_avg = false;
+		stack = stack->next;
 	}
 }
 

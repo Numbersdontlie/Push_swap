@@ -36,7 +36,7 @@ void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
 		rra(stack_a);
 	pb(stack_a, stack_b);
 	ft_sort_stack_3(stack_a);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
 }
 
 void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
@@ -50,5 +50,5 @@ void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
 		rra(stack_a);
 	pb(stack_a, stack_b);
 	ft_sort_stack_4(stack_a, stack_b);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
 }

@@ -24,8 +24,15 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_insert_data(argv);
-	ft_router(stack_a, stack_b);
-	ft_stack_dealloc(&stack_b);
+	if (argc <= 4)
+		ft_sort_stack_3(&stack_a);
+	if (argc == 5)
+		ft_sort_stack_4(&stack_a, &stack_b);
+	if (argc == 6)
+		ft_sort_stack_5(&stack_a, &stack_b);
+	if (argc > 6)
+		ft_sort_stack_big(&stack_a, &stack_b);
+	//ft_stack_dealloc(&stack_b);
 	ft_stack_dealloc(&stack_a);
 	return (0);
 }

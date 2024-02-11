@@ -23,59 +23,54 @@
 
 t_node	*ft_find_high(t_node *stack)
 {
-	t_node	*tmp;
 	t_node	*high_node;
 	int		high;
 
-	tmp = stack;
-	high = 0;
-	while (tmp->next != NULL)
+	high = INT_MIN;
+	while (stack)
 	{
-		if (tmp->value > high)
+		if (stack->value > high)
 		{
-			high = tmp->value;
-			high_node = tmp;
+			high = stack->value;
+			high_node = stack;
 		}
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	return (high_node);
 }
 
 t_node	*ft_find_low(t_node *stack)
 {
-	t_node	*tmp;
 	t_node	*low_node;
 	int		low;
 
-	tmp = stack;
-	low = 0;
-	while (tmp != NULL)
+	low = INT_MAX;
+	while (stack->next != NULL)
 	{
-		if (tmp->value < low)
+		if (stack->value < low)
 		{
-			low = tmp->value;
-			low_node = tmp;
+			low = stack->value;
+			low_node = stack;
 		}
-		tmp = tmp->next;
+		stack = stack->next;
 	}
 	return (low_node);
 }
 
-t_node	ft_last_node(t_node *stack)
+t_node	*ft_last_node(t_node *stack)
 {
-	t_node	*tmp;
-
-	tmp = stack;
-	while (tmp != NULL)
-		tmp = tmp->next;
-	return (*tmp);
+	if (stack == NULL)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
 t_node	*ft_create_node(int num)
 {
 	t_node	*node;
 
-	node = malloc(sizeof(t_node));
+	node = (t_node *)malloc(sizeof(t_node));
 	if (node == NULL)
 		return (NULL);
 	node->value = num;

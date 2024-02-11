@@ -27,7 +27,7 @@ t_node	*ft_insert_data(char **argv)
 {
 	t_node	*stack_a;
 
-	stack_a = ft_insert_node(argv);
+	stack_a = ft_insert_nodes(argv);
 	if (ft_check_sorted(stack_a) == 1)
 	{
 		ft_stack_dealloc(&stack_a);
@@ -36,7 +36,7 @@ t_node	*ft_insert_data(char **argv)
 	return (stack_a);
 }
 
-t_node	*ft_insert_node(char **argv)
+t_node	*ft_insert_nodes(char **argv)
 {
 	int		i;
 	long	num;
@@ -53,6 +53,7 @@ t_node	*ft_insert_node(char **argv)
 		ft_add_back(&stack_a, tmp);
 		i++;
 	}
+	tmp = NULL;
 	return (stack_a);
 }
 

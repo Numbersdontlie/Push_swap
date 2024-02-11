@@ -274,7 +274,7 @@ void	ft_check_duplicates(char **argv);
  * @param **stack_a: the stack to initialize
  * @return void
 **/
-t_node	*ft_insert_node(char **argv);
+t_node	*ft_insert_nodes(char **argv);
 
 /**
  * @brief check for errors and exit
@@ -320,7 +320,7 @@ void	ft_print_stack(t_node *stack);
  * @param head: the head of the list
  * @return the last node of the list
 **/
-t_node	ft_last_node(t_node *stack);
+t_node	*ft_last_node(t_node *stack);
 
 /**
  * @brief find the lowest number in the set
@@ -481,7 +481,7 @@ void	ft_cost_top(t_node *stack);
  * @param stack_a: stack with numbers already sorted where the number from B will be pushed
  * @return the node containing the best friend A.K.A the one with the less positive difference
 **/
-t_node	ft_find_bffo(t_node	*stack_a, long num);
+void	ft_find_bffo(t_node *stack_a, t_node *stack_b);
 
 /**
  * @brief recalculate numbers after each iteration

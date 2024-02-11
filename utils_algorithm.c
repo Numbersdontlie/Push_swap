@@ -18,6 +18,7 @@ void	ft_cost_top(t_node *stack)
 	int	mid;
 	
 	mid = (ft_stack_size(stack)/2);//calculate the middle point of the list
+	ft_get_index(stack);
 	while (stack)
 	{
 		if (stack->index <= mid)//check if number is above the middle point 
@@ -29,29 +30,31 @@ void	ft_cost_top(t_node *stack)
 }
 
 //Function to find the best friend of number in stack_a
-t_node	ft_find_bffo(t_node	*stack_a, long num)
+void	ft_find_bffo(t_node *stack_a, t_node *stack_b)
 {
 	t_node	*bffo;
-	long	count;
-	long	tmp;//to save calculation during each iteration
+	int		best;
 	t_node	*nod_tmp;
 
-	count = INT_MAX;//initialize at max value
-	nod_tmp = NULL;
-	bffo = NULL;
-	*nod_tmp = *stack_a;//store the head for later
-	while (stack_a->next != NULL)
+	while (stack_b)
 	{
-		tmp = stack_a->value - num;//calculate the diff between number and all values in stack a
-		if((tmp < count) && stack_a->value > num)//check if the calculated value is less than count and if is greater than the number
+		best = INT_MAX;
+		nod_tmp = stack_a;
+		while (nod_tmp)
 		{
-			count = tmp;//save the value in count
-			*bffo = *stack_a;//save the node
+			if (nod_tmp->value > stack_b->value && nod_tmp->value < best)
+			{
+				best = nod_tmp->value;
+				bffo = nod_tmp;
+			}
+			nod_tmp = nod_tmp->next;
 		}
-		stack_a = stack_a->next;//step of iteration
+		if (best == INT_MAX)
+			stack_b->target_node = ft_find_low(stack_a);
+		else
+			stack_b->target_node = bffo;
+		stack_b = stack_b->next;
 	}
-	stack_a = nod_tmp;//como back to the head after iteration
-	return (*bffo);//return the node with the best friend
 }
 
 //Function to calculate the price of the movements in stack A and B
@@ -69,9 +72,9 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 //Function to recalculate the numbers each time that a value is pushed from one stack to another
 void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
 {
-	ft_find_bffo(stack_a, stack_b->value);
+	ft_find_bffo(stack_a, stack_b);
 	ft_above_avg(stack_a);
-	ft_above_avg(stack_a);
+	ft_above_avg(stack_b);
 	ft_calculate_price(stack_a, stack_b);
 }
 
@@ -100,12 +103,16 @@ t_node	*ft_cheapest_node(t_node *stack_b)
 //this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
-	while (ft_stack_size(*stack_a) > 5)
+	int	size;
+
+	size = ft_stack_size(*stack_a);
+	while (size >= 5)
 	{
 		ft_above_avg(*stack_a);
 		if ((*stack_a)->above_avg == false)
 			pb(stack_a, stack_b);
 		else
 			ra(stack_a);
+		size--;
 	}
 }

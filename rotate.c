@@ -21,7 +21,7 @@ void	ft_rotate(t_node **stack)
 	last = NULL;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	*last = ft_last_node(*stack);//find last node
+	last = ft_last_node(*stack);//find last node
 	tmp = (*stack)->next;//save the head for later
 	last->next = *stack;//point the last to the head
 	(*stack)->next = NULL;//point next of head to pointer (last one)
