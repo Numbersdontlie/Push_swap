@@ -68,7 +68,8 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*minimo;
 
-	ft_push_below_avg(stack_a, stack_b);//push from A to B depending if the number is below or above AVG
+	while (ft_stack_size(*stack_a) > 5)
+		ft_push_below_avg(stack_a, stack_b);//push from A to B depending if the number is below or above AVG
 	ft_sort_stack_5(stack_a, stack_b);//sort 5 numbers remaining in A
 	while (*stack_b)//iterate in stack_b until is empty
 	{

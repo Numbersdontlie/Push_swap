@@ -16,15 +16,17 @@
 void	ft_cost_top(t_node *stack)
 {
 	int	mid;
+	int	size;
 	
 	mid = (ft_stack_size(stack)/2);//calculate the middle point of the list
-	ft_get_index(stack);
+	size = (ft_stack_size(stack));//calculate the size of the list
+	ft_get_index(stack);//set an index for each number
 	while (stack)
 	{
 		if (stack->index <= mid)//check if number is above the middle point 
 			stack->exit_cost = stack->index;//the idx will be the # of movements required to put it on top (goes up with rotate)
 		else if (stack->index > mid)//check if the number is below the middle point
-			stack->exit_cost = ft_stack_size(stack) - stack->index;//the # of movements will be the diff between size of list and current index (goes down reverse rotate)
+			stack->exit_cost = size - stack->index;//the # of movements will be the diff between size of list and current index (goes down reverse rotate)
 		stack = stack->next;
 	}
 }
@@ -103,16 +105,9 @@ t_node	*ft_cheapest_node(t_node *stack_b)
 //this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
-	int	size;
-
-	size = ft_stack_size(*stack_a);
-	while (size >= 5)
-	{
-		ft_above_avg(*stack_a);
-		if ((*stack_a)->above_avg == false)
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
-		size--;
-	}
+	ft_above_avg(*stack_a);
+	if ((*stack_a)->above_avg == false)
+		pb(stack_a, stack_b);
+	else
+		ra(stack_a);
 }
