@@ -44,7 +44,7 @@ int	ft_stack_size(t_node *stack)
 	int		count;
 
 	count = 0;
-	while (stack->next != NULL)
+	while (stack)
 	{
 		count++;
 		stack = stack->next;
@@ -76,6 +76,8 @@ int	ft_average(t_node *stack)
 	tmp = stack;
 	sum = 0;
 	n = ft_stack_size(stack);
+	if (n == 0)//case when list is empty, avoid to divide by zero
+		return (1);
 	while (tmp->next != NULL)
 	{
 		sum += tmp->value;
@@ -104,12 +106,12 @@ void	ft_above_avg(t_node *stack)
 //Function to assign a index to each number in my list
 void	ft_get_index(t_node *stack)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (stack == NULL)
 		return ;
-	while (stack->next != NULL)
+	while (stack)
 	{
 		stack->index = i;
 		stack = stack->next;

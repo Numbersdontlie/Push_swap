@@ -45,7 +45,7 @@ t_node	*ft_find_low(t_node *stack)
 	int		low;
 
 	low = INT_MAX;
-	while (stack->next != NULL)
+	while (stack)
 	{
 		if (stack->value < low)
 		{
@@ -76,6 +76,7 @@ t_node	*ft_create_node(int num)
 	node->value = num;
 	node->next = NULL;
 	return (node);
+	free(node);
 }
 
 void	ft_add_back(t_node	**stack_a, t_node *node)

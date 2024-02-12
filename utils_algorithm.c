@@ -18,6 +18,10 @@ void	ft_cost_top(t_node *stack)
 	int	mid;
 	int	size;
 	
+	mid = 0;
+	size = 0;
+	if (stack == NULL)//check for empty list
+		return ;
 	mid = (ft_stack_size(stack)/2);//calculate the middle point of the list
 	size = (ft_stack_size(stack));//calculate the size of the list
 	ft_get_index(stack);//set an index for each number
