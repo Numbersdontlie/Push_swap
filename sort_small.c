@@ -15,19 +15,23 @@
 void	ft_sort_stack_3(t_node **stack)
 {
 	t_node	*high;
-	int		val;
 
 	printf("entering print3:\n");
 	high = ft_find_high(*stack);
-	val = high->value;
-	if ((*stack)->value == val)
+	if ((*stack)->next->value == high->value)
+	{
+		printf("entering 1st ra in sort_3:\n");
 		ra(stack);
-	else if ((*stack)->next->value == val) {
-		printf("sort 3\n");
+	}
+	else if ((*stack)->next->value == high->value) {
+		printf("entering 1st rra in sort_3:\n");
 		rra(stack);
 	}
 	if ((*stack)->value > (*stack)->next->value)
+	{	
+		printf("entering 1st sa in sort_3:\n");
 		sa(stack);
+	}
 }
 
 void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
@@ -36,9 +40,9 @@ void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
 
 	printf("entering print4:\n");
 	low = ft_find_low(*stack_a);
-	if ((*stack_a)->next == low)
+	if ((*stack_a)->next->value == low->value)
 		sa(stack_a);
-	while (*stack_a != low) {
+	while ((*stack_a)->value != low->value) {
 		printf("sort 4: value: %i, lowest: %i\n", (*stack_a)->value, low->value);
 		rra(stack_a);
 		//stack_a = &(*stack_a)->next;

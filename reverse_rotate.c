@@ -15,20 +15,21 @@
 //REVERSE ROTATE -> rra, rrb, rrr
 void	ft_reverse_rotate(t_node **stack)
 {
-	t_node	*tmp;//find last
-	t_node	*last;//find previous to last
+	t_node	*prev;//find last
+	t_node	*current;//find previous to last
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	tmp = *stack;//init at head
-	while (tmp->next != NULL)//iterate until the end
+	prev = NULL;
+	current = *stack;//init at head
+	while (current->next != NULL)//iterate until the end
 	{
-		last = tmp;//get node before last node
-		tmp = tmp->next;//move to last node
+		prev = current;//get node before last node
+		current = current->next;//iterate until last node
 	}
-	tmp->next = *stack;//put the last on top
-	*stack = tmp;//update the head
-	last->next = NULL;//update the last node (point to null)
+	current->next = *stack;//put the last on top
+	*stack = current;//update the head
+	prev->next = NULL;//update the last node (point to null)
 }
 void	rra(t_node **stack_a)
 {

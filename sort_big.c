@@ -85,8 +85,10 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 	{
 		printf("enter the while 2 in sort big\n");
 		ft_recalculate_numbers(*stack_a, *stack_b);//update the numbers:price, best friend, below/above avg 
+		printf("pushing from b to a\n");
 		ft_push_from_b_to_a(stack_a, stack_b);//push from B to A. In each iteration the number on top of B should be paired with the best friend in A
 	}
+	printf("calculating above_avg\n");
 	ft_above_avg(*stack_a);//recalculate above/below AVG when all the numbers are in stack A
 	minimo = ft_find_low(*stack_a);//find the minimun value in the set
 	val = minimo->value;
