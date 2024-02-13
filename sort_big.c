@@ -40,8 +40,11 @@ void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
 			else
 				rrb(stack);
 		}
+		stack = &(*stack)->next;
 	}
 }
+
+//Function to push from stack_b to stack_a
 void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*node;
@@ -69,25 +72,39 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*minimo;
+	int		val;
 
 	while (ft_stack_size(*stack_a) > 5)
+	{
+		printf("enter the while 1 in sort big\n");
 		ft_push_below_avg(stack_a, stack_b);//push from A to B depending if the number is below or above AVG
+	}
+	printf("Calling print5:\n");
 	ft_sort_stack_5(stack_a, stack_b);//sort 5 numbers remaining in A
 	while (stack_b)//iterate in stack_b until is empty
 	{
+		printf("enter the while 2 in sort big\n");
 		ft_recalculate_numbers(*stack_a, *stack_b);//update the numbers:price, best friend, below/above avg 
 		ft_push_from_b_to_a(stack_a, stack_b);//push from B to A. In each iteration the number on top of B should be paired with the best friend in A
 	}
 	ft_above_avg(*stack_a);//recalculate above/below AVG when all the numbers are in stack A
 	minimo = ft_find_low(*stack_a);//find the minimun value in the set
+	val = minimo->value;
 	if (minimo->above_avg == true)//check if the minimun is above the avg and move it accordingly
 	{
-		while (*stack_a != minimo)
+		while ((*stack_a)->value != val)
+		{	
+			printf("enter the while 3 in sort big\n");
 			ra(stack_a);
+		}
 	}
 	else//check if the minimun is below the avg and move it accordingly
 	{
-		while (*stack_a != minimo)
+		while ((*stack_a)->value != val)
+		{
+			printf("enter the while 4 in sort big\n");
 			rra(stack_a);
+		}
 	}
 }
+

@@ -114,6 +114,8 @@ t_node	*ft_cheapest_node(t_node *stack_b)
 //this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
+	if (stack_a == NULL)
+		return ;
 	ft_above_avg(*stack_a);
 	if ((*stack_a)->above_avg == false)
 		pb(stack_a, stack_b);
