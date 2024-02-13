@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/09 23:38:31 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/13 16:20:36 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,24 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 {
 	ft_cost_top(stack_a);//set the cost to top in A
 	ft_cost_top(stack_b);//set the cost to top in B
-	while (stack_b)
+	if (stack_b != NULL)
 	{
-		stack_b->price = stack_b->exit_cost + stack_b->target_node->exit_cost;//in each iteration add the cost to top in B to the cost to top in A A.K.A "target node"
-		stack_b = stack_b->next;//iterate in the list
+		while (stack_b)
+		{
+			stack_b->price = stack_b->exit_cost + stack_b->target_node->exit_cost;//in each iteration add the cost to top in B to the cost to top in A A.K.A "target node"
+			stack_b = stack_b->next;//iterate in the list
+		}
 	}
+	else
+		return ;
 }
 
 //Function to recalculate the numbers each time that a value is pushed from one stack to another
 void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
 {
 	ft_find_bffo(stack_a, stack_b);
-	ft_above_avg(stack_a);
-	ft_above_avg(stack_b);
+	//ft_above_avg(stack_a);
+	//ft_above_avg(stack_b);
 	ft_calculate_price(stack_a, stack_b);
 }
 

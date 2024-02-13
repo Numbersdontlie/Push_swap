@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 00:49:24 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/09 21:21:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:30:32 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*node;
 
+	if (stack_b == NULL)
+		return ;
 	node = ft_cheapest_node(*stack_b);//find the cheapest node to push
 	while (*stack_a != (*stack_b)->target_node && *stack_b != node)//iterate until the top of A is the best friend of B and until the top of B is the best friend of the one in A
 	{
@@ -71,7 +73,7 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 	while (ft_stack_size(*stack_a) > 5)
 		ft_push_below_avg(stack_a, stack_b);//push from A to B depending if the number is below or above AVG
 	ft_sort_stack_5(stack_a, stack_b);//sort 5 numbers remaining in A
-	while (*stack_b)//iterate in stack_b until is empty
+	while (stack_b)//iterate in stack_b until is empty
 	{
 		ft_recalculate_numbers(*stack_a, *stack_b);//update the numbers:price, best friend, below/above avg 
 		ft_push_from_b_to_a(stack_a, stack_b);//push from B to A. In each iteration the number on top of B should be paired with the best friend in A

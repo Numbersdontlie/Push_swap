@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/10 00:09:10 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:52:45 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_above_avg(t_node *stack)
 	double	avg;
 
 	avg = ft_average(stack);
-	while (stack->next != NULL)
+	while (stack)
 	{
 		if (stack->value > avg)
 			stack->above_avg = true;
