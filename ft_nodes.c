@@ -26,17 +26,17 @@ t_node	*ft_find_high(t_node *stack)
 	t_node	*high_node;
 	int		high;
 
-	high = INT_MIN;
-	while (stack)
+	high = INT_MIN;//secure init and assign value
+	while (stack->next != NULL)//iterate in stack
 	{
 		if (stack->value > high)
 		{
-			high = stack->value;
-			high_node = stack;
+			high = stack->value;//takes the new high 
+			high_node = stack;//save the node with the value
 		}
-		stack = stack->next;
+		stack = stack->next;//step of iteration
 	}
-	return (high_node);
+	return (high_node);//return node with the highest value
 }
 
 t_node	*ft_find_low(t_node *stack)
@@ -44,8 +44,8 @@ t_node	*ft_find_low(t_node *stack)
 	t_node	*low_node;
 	int		low;
 
-	low = INT_MAX;
-	while (stack)
+	low = INT_MAX;//secure init and assign of value at 1st iteration
+	while (stack->next != NULL)//iterate through stack
 	{
 		if (stack->value < low)
 		{
@@ -76,7 +76,6 @@ t_node	*ft_create_node(int num)
 	node->value = num;
 	node->next = NULL;
 	return (node);
-	free(node);
 }
 
 void	ft_add_back(t_node	**stack_a, t_node *node)

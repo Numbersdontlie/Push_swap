@@ -39,7 +39,7 @@ typedef struct	s_node
 	bool			above_avg;//check if value is above the average 
 	bool			arriba_abajo;//check the position of the number in stack
 	struct s_node	*next;//next node
-	struct s_node	*target_node;//target node in the other stack
+	struct s_node	*target_node;//target node in stack_a. This will be used to push from b to a
 }	t_node;
 
 /**

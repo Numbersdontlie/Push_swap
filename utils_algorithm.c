@@ -40,11 +40,11 @@ void	ft_find_bffo(t_node *stack_a, t_node *stack_b)
 	int		best;
 	t_node	*nod_tmp;
 
-	while (stack_b)
+	while (stack_b->next != NULL && stack_b)
 	{
 		best = INT_MAX;
 		nod_tmp = stack_a;
-		while (nod_tmp)
+		while (nod_tmp->next != NULL)
 		{
 			if (nod_tmp->value > stack_b->value && nod_tmp->value < best)
 			{
@@ -70,7 +70,7 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 	ft_cost_top(stack_b);//set the cost to top in B
 	if (stack_b != NULL)
 	{
-		while (stack_b)
+		while (stack_b->next != NULL)
 		{
 			stack_b->price = stack_b->exit_cost + stack_b->target_node->exit_cost;//in each iteration add the cost to top in B to the cost to top in A A.K.A "target node"
 			stack_b = stack_b->next;//iterate in the list
@@ -83,7 +83,9 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 //Function to recalculate the numbers each time that a value is pushed from one stack to another
 void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
 {
-	printf("entering into ft_recalculate_numbers");
+	if (stack_a == NULL || stack_b == NULL)
+		return ;
+	printf("entering into ft_recalculate_numbers\n");
 	ft_find_bffo(stack_a, stack_b);
 	ft_arriba_abajo(stack_a);
 	ft_arriba_abajo(stack_b);
@@ -100,7 +102,7 @@ t_node	*ft_cheapest_node(t_node *stack)
 	min = INT_MAX;//init with the max int value
 	if (stack == NULL)//check for empty list
 		return (NULL);
-	while (stack)
+	while (stack->next != NULL)
 	{
 		if (stack->price < min)//check if price is lower than min
 		{
