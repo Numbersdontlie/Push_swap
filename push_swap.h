@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/10 00:04:24 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:08:01 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_node
 	int				price;//sum of exit cost + exit cost best friend
 	int				index;//index inside the list
 	bool			above_avg;//check if value is above the average 
+	bool			arriba_abajo;//check the position of the number in stack
 	struct s_node	*next;//next node
 	struct s_node	*target_node;//target node in the other stack
 }	t_node;
@@ -550,5 +551,7 @@ void	ft_router(t_node *stack_a, t_node *stack_b);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 
 void	ft_add_back(t_node	**stack_a, t_node *node);
+
+void	ft_arriba_abajo(t_node *stack);//True: arriba. false:abajo
 
 #endif

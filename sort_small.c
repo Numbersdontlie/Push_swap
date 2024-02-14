@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/13 15:40:39 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:43:11 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
 	low = ft_find_low(*stack_a);
 	if ((*stack_a)->next->value == low->value)
 		sa(stack_a);
-	while ((*stack_a)->value != low->value) {
+	while (*stack_a != low) {
 		printf("sort 4: value: %i, lowest: %i\n", (*stack_a)->value, low->value);
 		rra(stack_a);
 		//stack_a = &(*stack_a)->next;

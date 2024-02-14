@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/13 16:20:36 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:07:20 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,19 @@
 //Function to get the number of movements needed to put a specific number in the top of the stack
 void	ft_cost_top(t_node *stack)
 {
-	int	mid;
 	int	size;
-	
-	mid = 0;
+
 	size = 0;
 	if (stack == NULL)//check for empty list
 		return ;
-	mid = (ft_stack_size(stack)/2);//calculate the middle point of the list
-	size = (ft_stack_size(stack));//calculate the size of the list
+	size = ft_stack_size(stack);
 	ft_get_index(stack);//set an index for each number
+	ft_arriba_abajo(stack);//set position for number
 	while (stack)
 	{
-		if (stack->index <= mid)//check if number is above the middle point 
+		if (stack->arriba_abajo == true)//check if number is above the middle point (true -> arriba)
 			stack->exit_cost = stack->index;//the idx will be the # of movements required to put it on top (goes up with rotate)
-		else if (stack->index > mid)//check if the number is below the middle point
+		else if (stack->arriba_abajo == false)//check if the number is below the middle point (false -> abajo)
 			stack->exit_cost = size - stack->index;//the # of movements will be the diff between size of list and current index (goes down reverse rotate)
 		stack = stack->next;
 	}
@@ -87,29 +85,29 @@ void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
 {
 	printf("entering into ft_recalculate_numbers");
 	ft_find_bffo(stack_a, stack_b);
-	//ft_above_avg(stack_a);
-	//ft_above_avg(stack_b);
+	ft_arriba_abajo(stack_a);
+	ft_arriba_abajo(stack_b);
 	ft_calculate_price(stack_a, stack_b);
 }
 
 //Function to find the node with the less number of movements (cheapest)
-t_node	*ft_cheapest_node(t_node *stack_b)
+t_node	*ft_cheapest_node(t_node *stack)
 {
 	t_node	*best;
 	int		min;
 
 	best = NULL;//init null
 	min = INT_MAX;//init with the max int value
-	if (stack_b == NULL)//check for empty list
+	if (stack == NULL)//check for empty list
 		return (NULL);
-	while (stack_b)
+	while (stack)
 	{
-		if (stack_b->price < min)//check if price is lower than min
+		if (stack->price < min)//check if price is lower than min
 		{
-			min = stack_b->price;//save the new min
-			best = stack_b;//save the node
+			min = stack->price;//save the new min
+			best = stack;//save the node
 		}
-		stack_b = stack_b->next;//iterate
+		stack = stack->next;//iterate
 	}
 	return (best);//return the node with the min value
 }
