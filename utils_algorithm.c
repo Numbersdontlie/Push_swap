@@ -66,6 +66,8 @@ void	ft_find_bffo(t_node *stack_a, t_node *stack_b)
 //Function to calculate the price of the movements in stack A and B
 void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 {
+	if (stack_a == NULL || stack_b == NULL)
+		return ;
 	ft_cost_top(stack_a);//set the cost to top in A
 	ft_cost_top(stack_b);//set the cost to top in B
 	if (stack_b != NULL)
@@ -83,6 +85,7 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 //Function to recalculate the numbers each time that a value is pushed from one stack to another
 void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
 {
+	printf("entering into ft_recalculate_numbers");
 	ft_find_bffo(stack_a, stack_b);
 	//ft_above_avg(stack_a);
 	//ft_above_avg(stack_b);

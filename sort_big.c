@@ -49,9 +49,11 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*node;
 
+	printf("entering into ft_push_from_b_to_a\n");
 	if (stack_b == NULL)
 		return ;
 	node = ft_cheapest_node(*stack_b);//find the cheapest node to push
+	printf("cheapest node from push_b_to_a: %d, with value: %d\n", node->price, node->value);
 	while (*stack_a != (*stack_b)->target_node && *stack_b != node)//iterate until the top of A is the best friend of B and until the top of B is the best friend of the one in A
 	{
 		if (node->above_avg == true && node->target_node->above_avg == true)//if both are above average rotate to make it go up and reach the top
@@ -61,10 +63,13 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 		stack_a = &(*stack_a)->next;//iterate
 		stack_b = &(*stack_b)->next;//iterate
 	}
+	printf("calling ft_above_avg\n");
 	ft_above_avg(*stack_a);//update the above avg flag
 	ft_above_avg(*stack_b);//update the above avg flag
+	printf("calling ft_rotate_stack_top\n");
 	ft_rotate_stack_top(stack_a, node->target_node, "stack_a");//rotate to top of the stack
 	ft_rotate_stack_top(stack_b, node, "stack_b");//rotate to top of the stack
+	printf("enter into pa from push_from_b_to_a\n");
 	pa(stack_b, stack_a);//push the number of top of B to the top of A, where should be the best friend to pair
 }
 
@@ -85,7 +90,7 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 	{
 		printf("enter the while 2 in sort big\n");
 		ft_recalculate_numbers(*stack_a, *stack_b);//update the numbers:price, best friend, below/above avg 
-		printf("pushing from b to a\n");
+		printf("calling the function pushing from b to a\n");
 		ft_push_from_b_to_a(stack_a, stack_b);//push from B to A. In each iteration the number on top of B should be paired with the best friend in A
 	}
 	printf("calculating above_avg\n");

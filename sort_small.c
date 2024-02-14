@@ -47,8 +47,10 @@ void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
 		rra(stack_a);
 		//stack_a = &(*stack_a)->next;
 	}
+	printf("entering pb from sort_4\n");
 	pb(stack_a, stack_b);
 	ft_sort_stack_3(stack_a);
+	printf("entering pa from sort_4\n");
 	pa(stack_a, stack_b);
 }
 
@@ -64,7 +66,9 @@ void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
 		//printf("sort 5");
 		rra(stack_a);
 	}
+	printf("entering pb from sort_5\n");
 	pb(stack_a, stack_b);
 	ft_sort_stack_4(stack_a, stack_b);
+	printf("entering pa from sort_5\n");
 	pa(stack_a, stack_b);
 }
