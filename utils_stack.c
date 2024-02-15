@@ -44,7 +44,7 @@ int	ft_stack_size(t_node *stack)
 	int		count;
 
 	count = 0;
-	while (stack)
+	while (stack->next != NULL && stack)
 	{
 		count++;
 		stack = stack->next;
@@ -52,19 +52,6 @@ int	ft_stack_size(t_node *stack)
 	return (count);
 }
 
-//Function to check which algorithm to use based on stack size
-void	ft_router(t_node *stack_a, t_node *stack_b)
-{
-	int	len;
-
-	len = ft_stack_size(stack_a);
-	if (len <= 3)
-		ft_sort_stack_3(&stack_a);//ToDo. Also check if stack_size = 2 inside this function
-	else if (len > 4)
-		ft_sort_stack_5(&stack_a, &stack_b);//ToDo. Should check for size 4?
-	else if (len > 5)
-		ft_sort_stack_big(&stack_a, &stack_b);//ToDo
-}
 //Function to calculate the average in the program
 int	ft_average(t_node *stack)
 {
@@ -118,3 +105,17 @@ void	ft_get_index(t_node *stack)
 		i++;
 	}
 }
+/*
+void	ft_router(t_node *stack_a, t_node *stack_b)
+{
+	int	len;
+
+	len = ft_stack_size(stack_a);
+	if (len <= 3)
+		ft_sort_stack_3(&stack_a);//ToDo. Also check if stack_size = 2 inside this function
+	else if (len > 4)
+		ft_sort_stack_5(&stack_a, &stack_b);//ToDo. Should check for size 4?
+	else if (len > 5)
+		ft_sort_stack_big(&stack_a, &stack_b);//ToDo
+}
+*/

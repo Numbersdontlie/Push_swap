@@ -554,4 +554,8 @@ void	ft_add_back(t_node	**stack_a, t_node *node);
 
 void	ft_arriba_abajo(t_node *stack);//True: arriba. false:abajo
 
+void	ft_sort_more(t_node **stack_a, t_node **stack_b);
+
+void	ft_sort_stack_2(t_node **stack_a);
+
 #endif

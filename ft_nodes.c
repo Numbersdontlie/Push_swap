@@ -70,7 +70,7 @@ t_node	*ft_create_node(int num)
 {
 	t_node	*node;
 
-	node = (t_node *)malloc(sizeof(t_node));
+	node = malloc(sizeof(t_node));
 	if (node == NULL)
 		return (NULL);
 	node->value = num;

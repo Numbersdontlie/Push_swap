@@ -53,7 +53,6 @@ t_node	*ft_insert_nodes(char **argv)
 		ft_add_back(&stack_a, tmp);
 		i++;
 	}
-	tmp = NULL;
 	return (stack_a);
 }
 

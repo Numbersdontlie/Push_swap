@@ -77,7 +77,9 @@ void	ft_arriba_abajo(t_node *stack)
 	int	mid;
 	
 	i = 0;
-	mid = ft_stack_size(stack);
+	if (stack == NULL)
+		return ;
+	mid = (ft_stack_size(stack) / 2);
 	while (stack)
 	{
 		stack->arriba_abajo = true;//True: arriba. false:abajo

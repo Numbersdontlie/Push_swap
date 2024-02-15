@@ -24,16 +24,14 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_insert_data(argv);
-	if (argc <= 4)
+	if (argc ==3 )
+		ft_sort_stack_2(&stack_a);
+	if (argc == 4)
 		ft_sort_stack_3(&stack_a);
-	if (argc == 5)
-		ft_sort_stack_4(&stack_a, &stack_b);
-	if (argc == 6)
-		ft_sort_stack_5(&stack_a, &stack_b);
-	if (argc > 6)
-		ft_sort_stack_big(&stack_a, &stack_b);
-	//ft_stack_dealloc(&stack_b);
+	if (argc > 4)
+		ft_sort_more(&stack_a, &stack_b);
 	ft_stack_dealloc(&stack_a);
+	ft_stack_dealloc(&stack_b);
 	return (0);
 }
 
@@ -52,7 +50,7 @@ int	main(int argc, char **argv)
 			ft_sort_stack_3(&stack_a);//ToDO
 		if (ft_stack_size(stack_a) > 3 && ft_stack_size(stack_a) <= 5)
 			ft_sort_stack_5(&stack_a);//ToDo
-		if (ft_stack_size(stack_a) > 5)
+		if (make (stack_a) > 5)
 			turk_algorithm(&stack_a, &stack_b);//ToDo -> ***Main part of the project!***
 	}
 	//ft_stack_dealloc(&stack_a);
