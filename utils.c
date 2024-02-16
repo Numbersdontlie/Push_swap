@@ -66,9 +66,9 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		n--;
 	}
 	if (n != '\0')
-		return (*p1 - *p2);
+		return (*p1 - *p2);//not equals
 	else
-		return (0);
+		return (0);//string are equals
 }
 
 void	ft_arriba_abajo(t_node *stack)
@@ -86,6 +86,20 @@ void	ft_arriba_abajo(t_node *stack)
 		if (i > mid)
 			stack->arriba_abajo = false;//True: arriba. false:abajo
 		i++;
+		stack = stack->next;
+	}
+}
+
+void	print_stack(t_node *stack)
+{
+	if (stack == NULL)
+	{
+		printf("empty stack\n");
+		return ;
+	}
+	while (stack)
+	{
+		printf("value: %d, cost: %d\n", stack->value, stack->exit_cost);
 		stack = stack->next;
 	}
 }

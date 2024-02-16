@@ -49,7 +49,11 @@ t_node	*ft_insert_nodes(char **argv)
 	while(argv[i])
 	{
 		num = ft_atol(argv[i]);
-		tmp = ft_create_node(num);
+		tmp = malloc(sizeof(t_node));
+		if (tmp == NULL)
+			return (NULL);
+		tmp->value = num;
+		tmp->next = NULL;
 		ft_add_back(&stack_a, tmp);
 		i++;
 	}

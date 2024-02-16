@@ -35,8 +35,6 @@ typedef struct	s_node
 	int				value;//value of the node
 	int				exit_cost;//number of moves to exit stack
 	int				price;//sum of exit cost + exit cost best friend
-	int				index;//index inside the list
-	bool			above_avg;//check if value is above the average 
 	bool			arriba_abajo;//check the position of the number in stack
 	struct s_node	*next;//next node
 	struct s_node	*target_node;//target node in stack_a. This will be used to push from b to a
@@ -485,18 +483,6 @@ void	ft_cost_top(t_node *stack);
 void	ft_find_bffo(t_node *stack_a, t_node *stack_b);
 
 /**
- * @brief recalculate numbers after each iteration
- * 
- * This function re calculate numbers after each iteration
- * the updated numbers will be best friend, above avg and price for each node
- * 
- * @param stack_a: stack with numbers
- * @param stack_b: stack with numbers
- * @return void
-**/
-void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b);
-
-/**
  * @brief find the cheapest node
  * 
  * This function calculate the cheapest node to be moved on top
@@ -516,16 +502,6 @@ t_node	*ft_cheapest_node(t_node *stack_b);
  * @return void
 **/
 void	ft_get_index(t_node *stack);
-
-/**
- * @brief check if a number is below or above the average
- * 
- * This function check if a number is below or above the average
- * 
- * @param stack: stack with nodes that will get a flag depending if they are above/below the average
- * @return void
-**/
-void	ft_above_avg(t_node *stack);
 
 /**
  * @brief calculates the average of the stack
@@ -561,5 +537,7 @@ void	ft_sort_stack_2(t_node **stack_a);
 void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
 
 void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
+
+void	print_stack(t_node *stack);
 
 #endif

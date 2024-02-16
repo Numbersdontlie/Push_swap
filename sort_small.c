@@ -42,32 +42,49 @@ void	ft_sort_stack_3(t_node **stack)
 	}
 }
 
+void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*cheapest;
+
+	cheapest = ft_cheapest_node(*stack_b);
+	printf("entering into ft_push_from_b_to_a\n");
+	if (stack_a == NULL || stack_b == NULL )//check for wrong parameters
+		return ;
+	if (cheapest->arriba_abajo == true && cheapest->target_node->arriba_abajo == true)
+		ft_rotate_best_top(stack_a, stack_b, cheapest);
+	else if (cheapest->arriba_abajo == false && cheapest->target_node->arriba_abajo == false)
+		ft_reverse_rotate_best_top(stack_a, stack_b, cheapest);
+	ft_arriba_abajo(*stack_a);
+	ft_arriba_abajo(*stack_b);
+	printf("cheapest node from push_b_to_a: %d, with value: %d, exit cost: %d, and up/down: %d,\n", cheapest->price, cheapest->value, cheapest->exit_cost, cheapest->arriba_abajo);
+	ft_rotate_stack_top(stack_a, cheapest->target_node, "stack_a");//rotate to top of stack_a the target node of the cheapest node in stack_b
+	ft_rotate_stack_top(stack_b, cheapest, "stack_b");//rotate to top of stack_b the cheapest node in stack_b
+	pa(stack_b, stack_a);//push top of b on top of a
+}
+
 void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*tmp;
+	t_node	*min;
 
-	tmp = NULL;
-	while (ft_stack_size(*stack_a) > 3)//repeat untill there is 3 elements in stack_a
-		ft_push_below_avg(stack_a, stack_b);//numbers above avg will go to the bottom of stack, numbers below avg will be pushed to b
-	ft_sort_stack_3(stack_a);//sort 3 elements in stack_a
-	while (*stack_b)//iterate the whole stack_b
+	while (ft_stack_size(*stack_a) > 3)
+		ft_push_below_avg(stack_a, stack_b);
+	ft_sort_stack_3(stack_a);
+	while (*stack_b)
 	{
-		ft_find_bffo(*stack_a, *stack_b);//find best friend in the current iteration
-		ft_arriba_abajo(*stack_a);//refresh after each iteration
-		ft_arriba_abajo(*stack_b);//refresh after each iteration
-		ft_calculate_price(*stack_a, *stack_b);//calculate price in the current iteration
-		ft_push_from_b_to_a(stack_a, stack_b);//push from stack_b to stack_a
+		ft_find_bffo(*stack_a, *stack_b);
+		ft_arriba_abajo(*stack_a);
+		ft_arriba_abajo(*stack_b);
+		ft_calculate_price(*stack_a, *stack_b);
+		ft_push_from_b_to_a(stack_a, stack_b);
 	}
-	ft_get_index(*stack_a);//set new idx after all elements come back to stack_a
-	tmp = ft_find_low(*stack_a);//find the min number
-	if (tmp->arriba_abajo == true)//if min number is in top half
-	{
-		while (*stack_a != tmp)
-			ra(stack_a);//rotate until min is in top of stack
-	}
-	else//min is in bottom half
-		while (*stack_a != tmp)
-			rra(stack_a);//reverse rotate until min is in top of stack
+	ft_arriba_abajo(*stack_a);
+	min = ft_find_low(*stack_a);
+	if (min->arriba_abajo == true)
+		while ((*stack_a) != min)
+			ra(stack_a);
+	else
+		while ((*stack_a) != min)
+			rra(stack_a);
 }
 
 /*

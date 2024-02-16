@@ -5,7 +5,7 @@ RESET=\033[0m
 NAME = push_swap
 
 SRCS = errors.c ft_nodes.c init_stack.c main.c push.c reverse_rotate.c rotate.c\
-	sort_big.c sort_small.c swap.c utils_algorithm.c utils_stack.c utils.c
+	sort_small.c swap.c utils_algorithm.c utils_stack.c utils.c
 
 OBJS = ${SRCS:.c=.o}
 

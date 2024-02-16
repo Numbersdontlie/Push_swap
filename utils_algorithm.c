@@ -76,18 +76,6 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 	}
 }
 
-//Function to recalculate the numbers each time that a value is pushed from one stack to another
-void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
-{
-	if (stack_a == NULL || stack_b == NULL)
-		return ;
-	printf("entering into ft_recalculate_numbers\n");
-	ft_find_bffo(stack_a, stack_b);
-	ft_arriba_abajo(stack_a);
-	ft_arriba_abajo(stack_b);
-	ft_calculate_price(stack_a, stack_b);
-}
-
 //Function to find the node with the less number of movements (cheapest)
 t_node	*ft_cheapest_node(t_node *stack)
 {
@@ -113,7 +101,7 @@ t_node	*ft_cheapest_node(t_node *stack)
 //this function will push the values that are below the avg to the stack b, the ones above the avg will be moved to the tail of the list
 void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 {
-	double	avg;
+	int	avg;
 
 	avg = 0;
 	if (stack_a == NULL && stack_b == NULL)
@@ -123,4 +111,31 @@ void	ft_push_below_avg(t_node **stack_a, t_node **stack_b)
 		pb(stack_a, stack_b);
 	else if ((*stack_a)->value > avg)
 		ra(stack_a);
+}
+
+//Function to rotate the stack and put on top the desired number (best friend)
+//when run it will move up or down until the desired node is on top of the desired stack
+//it should not receive empty parameters
+void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
+{
+	if (stack == NULL || stack_top == NULL)
+		return ;
+	while (*stack != stack_top)//iterate until the desired number is in the top of stack
+	{
+		if (ft_strncmp(stack_name, "stack_a", 7) == 0)//if the stack is A
+		{
+			if (stack_top->arriba_abajo == true)//check for arriba/abajo and move it accordingly
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for arriba/abajo and move it accordingly
+		{
+			if (stack_top->arriba_abajo == true)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+		stack = &(*stack)->next;
+	}
 }

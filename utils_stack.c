@@ -74,23 +74,8 @@ int	ft_average(t_node *stack)
 	return (avg);
 }
 
-//Function to check if the value is above or below the avg
-void	ft_above_avg(t_node *stack)
-{
-	double	avg;
-
-	avg = ft_average(stack);
-	while (stack)
-	{
-		if (stack->value > avg)
-			stack->above_avg = true;
-		else
-			stack->above_avg = false;
-		stack = stack->next;
-	}
-}
-
-//Function to assign a index to each number in my list
+/*
+Function to assign a index to each number in my list
 void	ft_get_index(t_node *stack)
 {
 	int	i;
@@ -100,12 +85,11 @@ void	ft_get_index(t_node *stack)
 		return ;
 	while (stack)
 	{
-		stack->index = i;
 		stack = stack->next;
 		i++;
 	}
 }
-/*
+
 void	ft_router(t_node *stack_a, t_node *stack_b)
 {
 	int	len;
