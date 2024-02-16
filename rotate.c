@@ -46,3 +46,15 @@ void	rr(t_node **stack_a, t_node **stack_b)
 	ft_rotate(stack_b);
 		write(1, "rr\n", 3);
 }
+
+void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)
+{
+	if (stack_a == NULL || stack_b == NULL)
+		return ;
+	while ((*stack_a) != best->target_node && (*stack_b) != best)
+	{
+		ft_rotate(stack_a);
+		ft_rotate(stack_b);
+		write(1, "rr\n", 3);
+	}
+}

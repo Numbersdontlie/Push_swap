@@ -21,6 +21,33 @@
 
 # include "push_swap.h"
 
+//Function to rotate the stack and put on top the desired number (best friend)
+//when run it will move up or down until the desired node is on top of the desired stack
+//it should not receive empty parameters
+void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
+{
+	if (stack == NULL || stack_top == NULL)
+		return ;
+	while (*stack != stack_top)//iterate until the desired number is in the top of stack
+	{
+		if (ft_strncmp(stack_name, "stack_a", 7) == 0)//if the stack is A
+		{
+			if (stack_top->arriba_abajo == true)//check for arriba/abajo and move it accordingly
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for arriba/abajo and move it accordingly
+		{
+			if (stack_top->arriba_abajo == true)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+		stack = &(*stack)->next;
+	}
+}
+
 //Function to push from stack_b to stack_a
 void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 {
@@ -29,30 +56,26 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 	printf("entering into ft_push_from_b_to_a\n");
 	if (stack_a == NULL || stack_b == NULL)
 		return ;
-	ft_arriba_abajo(*stack_a);
-	ft_arriba_abajo(*stack_b);
 	node = ft_cheapest_node(*stack_b);//find the cheapest node in stack_b to push
 	if (node == NULL)
 		return ;
-	printf("cheapest node from push_b_to_a: %d, with value: %d\n", node->price, node->value);
+	printf("cheapest node from push_b_to_a: %d, with value: %d, exit cost: %d, and up/down: %d,\n", node->price, node->value, node->exit_cost, node->arriba_abajo);
 	if (node->arriba_abajo == true && node->target_node->arriba_abajo == true)//if both values are above middle point rotate to make it go up and reach the top
-	{
-		while (*stack_a != (*stack_b)->target_node && *stack_b != node)//iterate until the top of A is the best friend of B and until the top of B is the best friend of the one in A
-			rr(stack_a, stack_b);
-	}
+		ft_rotate_best_top(stack_a, stack_b, node);
 	else if (node->arriba_abajo == false && node->target_node->arriba_abajo == false)//if both values are above middle point rotate to make it go up and reach the top
-	{
-		while (*stack_a != (*stack_b)->target_node && *stack_b != node)//iterate until the top of A is the best friend of B and until the top of B is the best friend of the one in A
-			rrr(stack_a, stack_b);
-	}
+		ft_reverse_rotate_best_top(stack_a, stack_b, node);
+	ft_arriba_abajo(*stack_a);//set the flags for the stack after rotate it
+	ft_arriba_abajo(*stack_b);//set the flags for the stack after rotate it
+	ft_rotate_stack_top(stack_a, node->target_node, "stack_a");//rotate stack a until the target node from the cheapest in stack b is at the top of stack a
+	ft_rotate_stack_top(stack_b, node, "stack_b");////rotate stack b until the cheapest node in stack b is at the top of stack a
+	printf("enter into pa from push_from_b_to_a\n");
+	pa(stack_b, stack_a);//push the number of top of B to the top of A, where should be the best friend to pair
 	//printf("calling ft_arriba_abajo\n");
 	//ft_arriba_abajo(*stack_a);//update the arriba/abajo flag
 	//ft_arriba_abajo(*stack_b);//update the arriba/abajo flag
 	//printf("calling ft_rotate_stack_top\n");
 	//ft_rotate_stack_top(stack_a, node->target_node, "stack_a");//rotate to top of the stack
 	//ft_rotate_stack_top(stack_b, node, "stack_b");//rotate to top of the stack
-	printf("enter into pa from push_from_b_to_a\n");
-	pa(stack_b, stack_a);//push the number of top of B to the top of A, where should be the best friend to pair
 }
 
 //Function to sort a big stack
@@ -95,29 +118,4 @@ void	ft_sort_stack_big(t_node **stack_a, t_node **stack_b)
 		}
 	}
 }
-//Function to rotate the stack and put on top the desired number (best friend)
-//when run it will move up or down until the desired node is on top of the desired stack
-//it should not receive empty parameters
-void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
-{
-	if (stack == NULL || stack_top == NULL)
-		return ;
-	while (*stack != stack_top)//iterate until the desired number is in the top of stack
-	{
-		if (ft_strncmp(stack_name, "stack_a", 7) == 0)//if the stack is A
-		{
-			if (stack_top->arriba_abajo == true)//check for arriba/abajo and move it accordingly
-				ra(stack);
-			else
-				rra(stack);
-		}
-		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for arriba/abajo and move it accordingly
-		{
-			if (stack_top->arriba_abajo == true)
-				rb(stack);
-			else
-				rrb(stack);
-		}
-		stack = &(*stack)->next;
-	}
-}*/
+*/

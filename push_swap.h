@@ -558,4 +558,8 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b);
 
 void	ft_sort_stack_2(t_node **stack_a);
 
+void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
+
+void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
+
 #endif

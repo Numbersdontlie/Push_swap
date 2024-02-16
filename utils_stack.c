@@ -44,10 +44,10 @@ int	ft_stack_size(t_node *stack)
 	int		count;
 
 	count = 0;
-	while (stack->next != NULL && stack)
+	while (stack)
 	{
-		count++;
 		stack = stack->next;
+		count++;
 	}
 	return (count);
 }

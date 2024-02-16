@@ -52,9 +52,9 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 	ft_sort_stack_3(stack_a);//sort 3 elements in stack_a
 	while (*stack_b)//iterate the whole stack_b
 	{
-		ft_get_index(*stack_a);//set idx for stack in each iteration
-		ft_get_index(*stack_b);//set idx for stack in each iteration
 		ft_find_bffo(*stack_a, *stack_b);//find best friend in the current iteration
+		ft_arriba_abajo(*stack_a);//refresh after each iteration
+		ft_arriba_abajo(*stack_b);//refresh after each iteration
 		ft_calculate_price(*stack_a, *stack_b);//calculate price in the current iteration
 		ft_push_from_b_to_a(stack_a, stack_b);//push from stack_b to stack_a
 	}

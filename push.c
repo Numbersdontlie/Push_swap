@@ -20,9 +20,10 @@ void	ft_push(t_node **inicio, t_node **destino)
 	if (*inicio == NULL)
 		return ;
 	tmp = (*inicio)->next;
-	(*inicio)->next = *destino;
-	*destino = *inicio;
-	*inicio = tmp;
+	//(*inicio)->next = *destino;
+	(*inicio)->next = *destino;//set the 2nd element of list
+	*destino = *inicio;//set the 1st element
+	*inicio = tmp;//update head of element where number was pushed
 }
 //the 1st element at top of b will be the new top element in a
 void	pa(t_node **stack_a, t_node **stack_b)
