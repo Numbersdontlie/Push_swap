@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:20:35 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/07 12:20:20 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:51:00 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_push(t_node **inicio, t_node **destino)
 
 	if (*inicio == NULL)
 		return ;
-	tmp = (*inicio)->next;
+	tmp = *inicio;
 	//(*inicio)->next = *destino;
-	(*inicio)->next = *destino;//set the 2nd element of list
-	*destino = *inicio;//set the 1st element
-	*inicio = tmp;//update head of element where number was pushed
+	*inicio = (*inicio)->next;//set the 2nd element of list
+	tmp->next = *destino;
+	*destino = tmp;
 }
 //the 1st element at top of b will be the new top element in a
 void	pa(t_node **stack_a, t_node **stack_b)
@@ -32,7 +32,7 @@ void	pa(t_node **stack_a, t_node **stack_b)
 		write(1, "pa\n", 3);
 }
 
-//the 1st element at top of a will be the new top element in b
+//the 1st element at top of A will be the new top element in B
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	ft_push(stack_a, stack_b);

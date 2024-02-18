@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 13:28:06 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:43:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,16 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*min;
 
-	while (ft_stack_size(*stack_a) > 3)
+	while (ft_stack_size(*stack_a) - 3 != 0)
+	{
+		printf("pushing below avg");
+		sleep(1);
 		ft_push_below_avg(stack_a, stack_b);
+		printf("stack A:\n");
+		ft_print_stack(*stack_a);
+		printf("stack B:\n");
+		ft_print_stack(*stack_b);
+	}
 	ft_sort_stack_3(stack_a);
 	while (*stack_b)
 	{
