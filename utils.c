@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:02:13 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 14:22:05 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:52:13 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,18 @@ void	ft_set_senal(t_node *stack)
 	}
 }
 
-void	ft_print_stack(t_node *stack)
+void	ft_print_stack(t_node **stack)
 {
+	t_node	*iter;
 	if (stack == NULL)
 	{
 		printf("empty stack\n");
 		return ;
 	}
-	while (stack)
+	iter = *stack;
+	while (iter)
 	{
-		printf("value: %d\n", stack->value);
-		stack = stack->next;
+		printf("value: %d\n", iter->value);
+		iter = iter->next;
 	}
 }

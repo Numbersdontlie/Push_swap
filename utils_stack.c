@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/13 15:52:45 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:22:49 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,54 @@ int	ft_stack_size(t_node *stack)
 //Function to calculate the average in the program
 int	ft_average(t_node *stack)
 {
-	t_node	*tmp;
 	long	sum;
 	int		n;
-	int		avg;
 
-	tmp = stack;
 	sum = 0;
 	n = ft_stack_size(stack);
-	if (n == 0)//case when list is empty, avoid to divide by zero
-		return (1);
-	while (tmp->next != NULL)
+	//if (n == 0)//case when list is empty, avoid to divide by zero
+	//	return (1);
+	while (stack)
 	{
-		sum += tmp->value;
-		tmp = tmp->next;
+		sum = sum + stack->value;
+		stack = stack->next;
 	}
-	avg = sum / n;
-	return (avg);
+	return (sum / n);
+}
+
+void	ft_set_objetivo(t_node *stack_a, t_node *stack_b)
+{
+	t_node	*objetivo;
+	t_node	*tmp;
+	int		mejor;
+
+	while(stack_b)
+	{
+		mejor = INT_MAX;
+		tmp = stack_a;
+		while (tmp)
+		{
+			if (tmp->value > stack_b->value && tmp->value < mejor)
+			{
+				mejor = tmp->value;
+				objetivo = tmp;
+			}
+			tmp = tmp->next;
+		}
+		if (mejor == INT_MAX)
+			stack_b->target_node = ft_find_low(stack_a);
+		else
+			stack_b->target_node = objetivo;
+		stack_b = stack_b->next;
+	}
+}
+
+void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
+{
+	ft_set_objetivo(stack_a, stack_b);
+	ft_set_senal(stack_a);
+	ft_set_senal(stack_b);
+	ft_calculate_price(stack_a, stack_b);
 }
 
 /*

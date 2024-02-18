@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 13:27:03 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:21:26 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,7 +311,7 @@ void	ft_stack_dealloc(t_node **head);
 **/
 int		ft_stack_size(t_node *stack);
 
-void	ft_print_stack(t_node *stack);
+void	ft_print_stack(t_node **stack);
 
 /**
  * @brief find the last node of the list
@@ -541,5 +541,9 @@ void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
 void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best);
 
 void	print_stack(t_node *stack);
+
+void	ft_set_objetivo(t_node *stack_a, t_node *stack_b);
+
+void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b);
 
 #endif
