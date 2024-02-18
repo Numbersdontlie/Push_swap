@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 21:33:56 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:28:45 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,37 @@ void	ft_sort_stack_3(t_node **stack)
 		sa(stack);
 	}
 }
+void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*tmp;
+
+	tmp = ft_find_low(*stack_a);
+	if ((*stack_a)->next == tmp)
+		sa(stack_a);
+	while (*stack_a != tmp)
+		rra(stack_a);
+	pb(stack_a, stack_b);
+}
+
+void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*tmp;
+	
+	tmp = ft_find_low(*stack_a);
+	if ((*stack_a)->next == tmp)
+		sa(stack_a);
+	while (*stack_a != tmp)
+		rra(stack_a);
+	pb(stack_a, stack_b);
+	ft_sort_stack_4(stack_a, stack_b);
+	pa(stack_b, stack_a);
+}
 
 void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*cheapest;
 
 	cheapest = ft_cheapest_node(*stack_b);
-	if (cheapest == NULL)
-		cheapest = *stack_b;
 	printf("entering into ft_push_from_b_to_a\n");
 	if (stack_a == NULL || stack_b == NULL )//check for wrong parameters
 		return ;
@@ -64,6 +87,7 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 	pa(stack_b, stack_a);//push top of b on top of a
 }
 
+
 void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*min;
@@ -71,10 +95,10 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 	//int		avg;
 
 	c = 0;
-	while ((ft_stack_size(*stack_a)) >= 3)
+	while ((ft_stack_size(*stack_a)) >= 5)
 	{
 		printf("pushing below avg\n");
-		sleep(1);
+		usleep(50000);
 		//avg = ft_average(*stack_a);
 		//printf("ELEMENT: %d, AVERAGE: %d\n", (*stack_a)->value, avg);
 		//pb(stack_a, stack_b);
@@ -91,7 +115,7 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 		c++;
 	}
 	//exit(1);
-	ft_sort_stack_3(stack_a);
+	ft_sort_stack_5(stack_a, stack_a);
 	while (*stack_b)
 	{
 		ft_recalculate_numbers(*stack_a, *stack_b);

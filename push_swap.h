@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 21:21:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:25:41 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	rr(t_node **stack_a, t_node **stack_b);
  * @param **stack: the pointer to the head of the list
  * @return void
 **/
-void	ft_reverse_rotate(t_node **stack);
+//void	ft_reverse_rotate(t_node **stack);
 
 /**
  * @brief reverse rotate the stack.

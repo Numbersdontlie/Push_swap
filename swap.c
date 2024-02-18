@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:51:39 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/09 23:20:48 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/19 00:15:39 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,19 @@ void	ft_swap(t_node **stack)
 void	sa(t_node **stack_a)
 {
 	ft_swap(stack_a);
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_node **stack_b)
 {
 	ft_swap(stack_b);
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_node **stack_a, t_node **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	{
-		write(1, "sa\n", 3);
-		write(1, "sb\n", 3);
-	}
+	write(1, "sa\n", 3);
+	write(1, "sb\n", 3);
 }

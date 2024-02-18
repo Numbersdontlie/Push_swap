@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:07 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/09 18:35:26 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:14:39 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,33 @@ void	ft_rotate(t_node **stack)
 	last = NULL;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	last = ft_last_node(*stack);//find last node
-	tmp = (*stack)->next;//save the head for later
-	last->next = *stack;//point the last to the head
-	(*stack)->next = NULL;//point next of head to pointer (last one)
-	*stack = tmp;//assign the new head
+	//last = ft_last_node(*stack);//find last node
+	tmp = *stack;//save the head
+	*stack = (*stack)->next;//update the head -> 2nd node
+	last = *stack;
+	while (last->next != NULL)
+		last = last->next;//get last node
+	last->next = tmp;
+	tmp->next = NULL;
 }
 
 void	ra(t_node **stack_a)
 {
 	ft_rotate(stack_a);
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_node **stack_b)
 {
 	ft_rotate(stack_b);
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
 
 void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)

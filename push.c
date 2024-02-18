@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:20:35 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 20:41:24 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:15:04 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_push(t_node **inicio, t_node **destino)
 void	pa(t_node **stack_a, t_node **stack_b)
 {
 	ft_push(stack_b, stack_a);
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 //the 1st element at top of A will be the new top element in B
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	ft_push(stack_a, stack_b);
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }

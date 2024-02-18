@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:43:10 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/08 14:30:36 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 00:31:12 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_node	*ft_find_high(t_node *stack)
 	int		high;
 
 	high = INT_MIN;//secure init and assign value
-	while (stack->next != NULL)//iterate in stack
+	while (stack)//iterate in stack
 	{
 		if (stack->value > high)
 		{
@@ -45,7 +45,7 @@ t_node	*ft_find_low(t_node *stack)
 	int		low;
 
 	low = INT_MAX;//secure init and assign of value at 1st iteration
-	while (stack->next != NULL)//iterate through stack
+	while (stack)//iterate through stack
 	{
 		if (stack->value < low)
 		{
@@ -61,7 +61,7 @@ t_node	*ft_last_node(t_node *stack)
 {
 	if (stack == NULL)
 		return (NULL);
-	while (stack->next != NULL)
+	while (stack)
 		stack = stack->next;
 	return (stack);
 }

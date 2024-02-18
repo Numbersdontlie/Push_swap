@@ -3,50 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luifer <luifer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/05 00:29:50 by luifer           ###   ########.fr       */
+/*   Updated: 2024/02/19 00:41:40 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
 //REVERSE ROTATE -> rra, rrb, rrr
-void	ft_reverse_rotate(t_node **stack)
+static void	ft_reverse_rotate(t_node **stack)
 {
-	t_node	*current;//find previous to last
 	t_node	*last;
+	t_node	*second_last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	current = *stack;//init at head
-	while (current->next != NULL)//iterate until the end
+	last = *stack;
+	while (last->next != NULL)
 	{
-		last = current;//get node before last node
-		current = current->next;//iterate until last node
+		second_last = last;//update the node before last node
+		last = last->next;//then move the the last node
 	}
-	current->next = *stack;//put the last on top
-	*stack = current;//update the head
-	last->next = NULL;//update the last node (point to null)
+	last->next = *stack;
+	*stack = last;
+	second_last->next = NULL;
 }
+
 void	rra(t_node **stack_a)
 {
 	ft_reverse_rotate(stack_a);
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_node **stack_b)
 {
 	ft_reverse_rotate(stack_b);
-		write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)
 {
 	ft_reverse_rotate(stack_a);
 	ft_reverse_rotate(stack_b);
-		write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }
 
 void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)
