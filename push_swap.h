@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/14 16:08:01 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:27:03 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
+# define UP 50
+# define DOWN 25
 
 //Structure of my node//
 typedef struct	s_node
@@ -35,7 +37,7 @@ typedef struct	s_node
 	int				value;//value of the node
 	int				exit_cost;//number of moves to exit stack
 	int				price;//sum of exit cost + exit cost best friend
-	bool			arriba_abajo;//check the position of the number in stack
+	int				senal;//check the position of the number in stack
 	struct s_node	*next;//next node
 	struct s_node	*target_node;//target node in stack_a. This will be used to push from b to a
 }	t_node;
@@ -528,7 +530,7 @@ int		ft_strncmp(char *s1, char *s2, size_t n);
 
 void	ft_add_back(t_node	**stack_a, t_node *node);
 
-void	ft_arriba_abajo(t_node *stack);//True: arriba. false:abajo
+void	ft_set_senal(t_node *stack);//True: arriba. false:abajo
 
 void	ft_sort_more(t_node **stack_a, t_node **stack_b);
 

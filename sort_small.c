@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/14 17:43:11 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:28:06 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,18 @@ void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 	t_node	*cheapest;
 
 	cheapest = ft_cheapest_node(*stack_b);
+	if (cheapest == NULL)
+		cheapest = *stack_b;
 	printf("entering into ft_push_from_b_to_a\n");
 	if (stack_a == NULL || stack_b == NULL )//check for wrong parameters
 		return ;
-	if (cheapest->arriba_abajo == true && cheapest->target_node->arriba_abajo == true)
+	if (cheapest->senal == UP && cheapest->target_node->senal == UP)
 		ft_rotate_best_top(stack_a, stack_b, cheapest);
-	else if (cheapest->arriba_abajo == false && cheapest->target_node->arriba_abajo == false)
+	else if (cheapest->senal == DOWN && cheapest->target_node->senal == DOWN)
 		ft_reverse_rotate_best_top(stack_a, stack_b, cheapest);
-	ft_arriba_abajo(*stack_a);
-	ft_arriba_abajo(*stack_b);
-	printf("cheapest node from push_b_to_a: %d, with value: %d, exit cost: %d, and up/down: %d,\n", cheapest->price, cheapest->value, cheapest->exit_cost, cheapest->arriba_abajo);
+	ft_set_senal(*stack_a);
+	ft_set_senal(*stack_b);
+	printf("cheapest node from push_b_to_a: %d, with value: %d, exit cost: %d, and up/down: %d,\n", cheapest->price, cheapest->value, cheapest->exit_cost, cheapest->senal);
 	ft_rotate_stack_top(stack_a, cheapest->target_node, "stack_a");//rotate to top of stack_a the target node of the cheapest node in stack_b
 	ft_rotate_stack_top(stack_b, cheapest, "stack_b");//rotate to top of stack_b the cheapest node in stack_b
 	pa(stack_b, stack_a);//push top of b on top of a
@@ -72,14 +74,14 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 	while (*stack_b)
 	{
 		ft_find_bffo(*stack_a, *stack_b);
-		ft_arriba_abajo(*stack_a);
-		ft_arriba_abajo(*stack_b);
+		ft_set_senal(*stack_a);
+		ft_set_senal(*stack_b);
 		ft_calculate_price(*stack_a, *stack_b);
 		ft_push_from_b_to_a(stack_a, stack_b);
 	}
-	ft_arriba_abajo(*stack_a);
+	ft_set_senal(*stack_a);
 	min = ft_find_low(*stack_a);
-	if (min->arriba_abajo == true)
+	if (min->senal == UP)
 		while ((*stack_a) != min)
 			ra(stack_a);
 	else

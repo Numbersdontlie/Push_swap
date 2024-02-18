@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/14 17:07:20 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:26:01 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,14 @@ void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name)
 	{
 		if (ft_strncmp(stack_name, "stack_a", 7) == 0)//if the stack is A
 		{
-			if (stack_top->arriba_abajo == true)//check for arriba/abajo and move it accordingly
+			if (stack_top->senal == UP)//check for arriba/abajo and move it accordingly
 				ra(stack);
 			else
 				rra(stack);
 		}
 		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for arriba/abajo and move it accordingly
 		{
-			if (stack_top->arriba_abajo == true)
+			if (stack_top->senal == UP)
 				rb(stack);
 			else
 				rrb(stack);

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:02:13 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/14 16:33:15 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:26:50 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		return (0);//string are equals
 }
 
-void	ft_arriba_abajo(t_node *stack)
+void	ft_set_senal(t_node *stack)
 {
 	int	i;
 	int	mid;
@@ -82,9 +82,9 @@ void	ft_arriba_abajo(t_node *stack)
 	mid = (ft_stack_size(stack) / 2);
 	while (stack)
 	{
-		stack->arriba_abajo = true;//True: arriba. false:abajo
+		stack->senal = UP;//True: arriba. false:abajo
 		if (i > mid)
-			stack->arriba_abajo = false;//True: arriba. false:abajo
+			stack->senal = DOWN;//True: arriba. false:abajo
 		i++;
 		stack = stack->next;
 	}
