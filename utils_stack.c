@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 12:05:29 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:10:48 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:27:58 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_stack_dealloc(t_node **stack)
 		return ;
 	while (*stack)//iterate until last element of list
 	{
-		aux = (*stack)->next;;//save node
+		aux = (*stack)->next;//save node
 		free(*stack);
 		*stack = aux;
 	}
@@ -50,24 +50,6 @@ int	ft_stack_size(t_node *stack)
 		count++;
 	}
 	return (count);
-}
-
-//Function to calculate the average in the program
-int	ft_average(t_node *stack)
-{
-	long	sum;
-	int		n;
-
-	sum = 0;
-	n = ft_stack_size(stack);
-	//if (n == 0)//case when list is empty, avoid to divide by zero
-	//	return (1);
-	while (stack)
-	{
-		sum = sum + stack->value;
-		stack = stack->next;
-	}
-	return (sum / n);
 }
 
 void	ft_set_objetivo(t_node *stack_a, t_node *stack_b)

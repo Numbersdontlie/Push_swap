@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:49 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:41:40 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:25:44 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,9 @@ void	rrb(t_node **stack_b)
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_node **stack_a, t_node **stack_b)
-{
-	ft_reverse_rotate(stack_a);
-	ft_reverse_rotate(stack_b);
-	write(1, "rrr\n", 4);
-}
-
 void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)
 {
-	if (stack_a == NULL || stack_b == NULL)
-		return ;
+	//printf("reverse rotate best top");
 	while ((*stack_a) != best->target_node && (*stack_b) != best)
 	{
 		ft_reverse_rotate(stack_a);
@@ -61,3 +53,12 @@ void	ft_reverse_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best
 		write(1, "rrr\n", 4);
 	}
 }
+
+/*
+void	rrr(t_node **stack_a, t_node **stack_b)
+{
+	ft_reverse_rotate(stack_a);
+	ft_reverse_rotate(stack_b);
+	write(1, "rrr\n", 4);
+}
+*/

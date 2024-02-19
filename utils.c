@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:02:13 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 17:52:13 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:01:12 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,14 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 void	ft_set_senal(t_node *stack)
 {
 	int	i;
-	int	mid;
+	int	medio;
 	
 	i = 0;
-	if (stack == NULL)
-		return ;
-	mid = (ft_stack_size(stack) / 2);
+	medio = (ft_stack_size(stack) / 2);
 	while (stack)
 	{
 		stack->senal = UP;//True: arriba. false:abajo
-		if (i > mid)
+		if (i > medio)
 			stack->senal = DOWN;//True: arriba. false:abajo
 		i++;
 		stack = stack->next;

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:18 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:25:41 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:51:55 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct	s_node
  * @param **head: the pointer to the head of the list
  * @return void
 **/
-void	ft_swap(t_node **head);
+// static void	ft_swap(t_node **head);
 
 /**
  * @brief swap the stack_a
@@ -96,7 +96,7 @@ void	ss(t_node **stack_a, t_node **stack_b);
  * @param **stack the stack to be rotated
  * @return void
 **/
-void	ft_rotate(t_node **stack);
+//static void	ft_rotate(t_node **stack);
 
 /**
  * @brief rotate the stack_a.
@@ -133,7 +133,7 @@ void	rb(t_node **stack_b);
  * @param **stack_b: the stack_b
  * @return void
 **/
-void	rr(t_node **stack_a, t_node **stack_b);
+//void	rr(t_node **stack_a, t_node **stack_b);
 
 /**
  * @brief reverse the stack.
@@ -194,7 +194,7 @@ void	rrr(t_node **stack_a, t_node **stack_b);
  * @param **destino: the stack receiving the number
  * @return void
 **/
-void	ft_push(t_node **inicio, t_node **destino);
+//void	ft_push(t_node **inicio, t_node **destino);
 
 /**
  * @brief push the stack.
@@ -275,7 +275,7 @@ void	ft_check_duplicates(char **argv);
  * @param **stack_a: the stack to initialize
  * @return void
 **/
-t_node	*ft_insert_nodes(char **argv);
+//t_node	*ft_insert_nodes(char **argv);
 
 /**
  * @brief check for errors and exit
@@ -447,7 +447,7 @@ void	ft_calculate_price(t_node *stack_a, t_node *stack_b);
  * @param stack_name: the name of the stack containing the number
  * @return void
 **/
-void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name);
+//void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name);
 
 /**
  * @brief push the numbers from one stack to another
@@ -460,7 +460,7 @@ void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name);
  * @param stack_b: stack with numbers 
  * @return void
 **/
-void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b);
+//void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b);
 
 /**
  * @brief calculate the cost to top
@@ -482,7 +482,7 @@ void	ft_cost_top(t_node *stack);
  * @param stack_a: stack with numbers already sorted where the number from B will be pushed
  * @return the node containing the best friend A.K.A the one with the less positive difference
 **/
-void	ft_find_bffo(t_node *stack_a, t_node *stack_b);
+//void	ft_find_bffo(t_node *stack_a, t_node *stack_b);
 
 /**
  * @brief find the cheapest node
@@ -513,7 +513,7 @@ void	ft_get_index(t_node *stack);
  * @param stack: stack with nodes from which the average will be calculated
  * @return int
 **/
-int		ft_average(t_node *stack);
+//int		ft_average(t_node *stack);
 
 /**
  * @brief check which algorithm to launch

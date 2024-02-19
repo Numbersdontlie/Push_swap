@@ -6,14 +6,14 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:20:35 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:15:04 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:25:19 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
 //PUSH -> pa, pb
-void	ft_push(t_node **inicio, t_node **destino)
+static void	ft_push(t_node **inicio, t_node **destino)
 {
 	t_node	*tmp;
 
@@ -23,8 +23,8 @@ void	ft_push(t_node **inicio, t_node **destino)
 	(*inicio)->next = *destino;//set the 2nd element of list
 	*destino = *inicio;
 	*inicio = tmp;
-	ft_print_stack(inicio);
-	ft_print_stack(destino);
+	//ft_print_stack(inicio);
+	//ft_print_stack(destino);
 }
 //the 1st element at top of b will be the new top element in a
 void	pa(t_node **stack_a, t_node **stack_b)

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:31:43 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/18 16:07:17 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:23:35 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "push_swap.h"
 # include <stdio.h>
 
+static t_node	*ft_insert_nodes(char **argv);
+
 t_node	*ft_insert_data(char **argv)
 {
 	t_node	*stack_a;
@@ -36,7 +38,7 @@ t_node	*ft_insert_data(char **argv)
 	return (stack_a);
 }
 
-t_node	*ft_insert_nodes(char **argv)
+static t_node	*ft_insert_nodes(char **argv)
 {
 	int		i;
 	long	num;
@@ -49,11 +51,7 @@ t_node	*ft_insert_nodes(char **argv)
 	while(argv[i])
 	{
 		num = ft_atol(argv[i]);
-		tmp = malloc(sizeof(t_node));
-		if (tmp == NULL)
-			return (NULL);
-		tmp->value = num;
-		tmp->next = NULL;
+		tmp = ft_create_node(num);
 		ft_add_back(&stack_a, tmp);
 		i++;
 	}

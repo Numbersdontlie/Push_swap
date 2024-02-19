@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:43:10 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:31:12 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:45:16 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_node	*ft_create_node(int num)
 {
 	t_node	*node;
 
-	node = malloc(sizeof(t_node));
+	node = (t_node *)malloc(sizeof(t_node));
 	if (node == NULL)
 		return (NULL);
 	node->value = num;
@@ -82,7 +82,7 @@ void	ft_add_back(t_node	**stack_a, t_node *node)
 {
 	t_node	*tmp;
 
-	if (stack_a == NULL || node == NULL)
+	if (stack_a == NULL && node == NULL)
 		return ;
 	if (*stack_a == NULL)
 	{

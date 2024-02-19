@@ -6,14 +6,14 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:19:07 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 00:14:39 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:50:11 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
 //ROTATE -> ra, rb, rr
-void	ft_rotate(t_node **stack)
+static void	ft_rotate(t_node **stack)
 {
 	t_node	*tmp;
 	t_node	*last;
@@ -43,17 +43,8 @@ void	rb(t_node **stack_b)
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **stack_a, t_node **stack_b)
-{
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
-	write(1, "rr\n", 3);
-}
-
 void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)
 {
-	if (stack_a == NULL || stack_b == NULL)
-		return ;
 	while ((*stack_a) != best->target_node && (*stack_b) != best)
 	{
 		ft_rotate(stack_a);
@@ -61,3 +52,12 @@ void	ft_rotate_best_top(t_node **stack_a, t_node **stack_b, t_node *best)
 		write(1, "rr\n", 3);
 	}
 }
+
+/*
+void	rr(t_node **stack_a, t_node **stack_b)
+{
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
+	write(1, "rr\n", 3);
+}
+*/
