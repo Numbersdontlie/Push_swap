@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/20 15:22:20 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:34:09 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_n
 				ra(stack);
 			else
 			{
-				printf("buscando el error_rotate_stack_top");
+				//printf("buscando el error_rotate_stack_top");
 				rra(stack);
 			}
 		}
@@ -94,7 +94,7 @@ static void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
 	//printf("cheapest node from push_b_to_a: %d, with value: %d, exit cost: %d, and up/down: %d,\n", cheapest->price, cheapest->value, cheapest->exit_cost, cheapest->senal);
 	ft_rotate_stack_top(stack_a, cheapest->target_node, "stack_a");//rotate to top of stack_a the target node of the cheapest node in stack_b
 	ft_rotate_stack_top(stack_b, cheapest, "stack_b");//rotate to top of stack_b the cheapest node in stack_b
-	pa(stack_b, stack_a);//push top of b on top of a
+	pa(stack_a, stack_b);//push top of b on top of a
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:33:00 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/20 15:21:00 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:21:48 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_sort_stack_3(t_node **stack)
 	else if ((*stack)->next->value == high->value) 
 	{
 		//printf("entering 1st rra in sort_3:\n");
-		printf("buscando el error_sort_3");
+		//printf("buscando el error_sort_3");
 		rra(stack);
 	}
 	if ((*stack)->value > (*stack)->next->value)
@@ -55,12 +55,12 @@ void	ft_sort_stack_4(t_node **stack_a, t_node **stack_b)
 		sa(stack_a);
 	while (*stack_a != tmp)
 	{
-		printf("buscando el error_sort_4");
+		//printf("buscando el error_sort_4");
 		rra(stack_a);
 	}
 	pb(stack_a, stack_b);
 	ft_sort_stack_3(stack_a);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
 }
 
 //function to sort stack with 5 elements
@@ -96,5 +96,5 @@ void	ft_sort_stack_5(t_node **stack_a, t_node **stack_b)
 	}
 	pb(stack_a, stack_b);
 	ft_sort_stack_4(stack_a, stack_b);
-	pa(stack_b, stack_a);
+	pa(stack_a, stack_b);
 }
