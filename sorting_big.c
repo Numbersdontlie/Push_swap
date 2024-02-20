@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:44:54 by lperez-h          #+#    #+#             */
-/*   Updated: 2024/02/19 19:50:38 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:22:20 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,33 @@
 
 static void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_name);
 static void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b);
+
+void	ft_set_objetivo(t_node *stack_a, t_node *stack_b)
+{
+	t_node	*objetivo;
+	t_node	*tmp;
+	int		mejor;
+
+	while(stack_b)
+	{
+		mejor = INT_MAX;
+		tmp = stack_a;
+		while (tmp)
+		{
+			if (tmp->value > stack_b->value && tmp->value < mejor)
+			{
+				mejor = tmp->value;
+				objetivo = tmp;
+			}
+			tmp = tmp->next;
+		}
+		if (mejor == INT_MAX)
+			stack_b->target_node = ft_find_low(stack_a);
+		else
+			stack_b->target_node = objetivo;
+		stack_b = stack_b->next;
+	}
+}
 
 //Function to rotate the stack and put on top the desired number (best friend)
 //when run it will move up or down until the desired node is on top of the desired stack
@@ -27,7 +54,10 @@ static void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_n
 			if (stack_top->senal == UP)//check for arriba/abajo and move it accordingly
 				ra(stack);
 			else
+			{
+				printf("buscando el error_rotate_stack_top");
 				rra(stack);
+			}
 		}
 		else if (ft_strncmp(stack_name, "stack_b", 7) == 0)//check for arriba/abajo and move it accordingly
 		{
@@ -37,6 +67,14 @@ static void	ft_rotate_stack_top(t_node **stack, t_node *stack_top, char *stack_n
 				rrb(stack);
 		}
 	}
+}
+
+static void	ft_recalculate_numbers(t_node *stack_a, t_node *stack_b)
+{
+	ft_set_objetivo(stack_a, stack_b);
+	ft_set_senal(stack_a);
+	ft_set_senal(stack_b);
+	ft_calculate_price(stack_a, stack_b);
 }
 
 static void	ft_push_from_b_to_a(t_node **stack_a, t_node **stack_b)
@@ -100,7 +138,10 @@ void	ft_sort_more(t_node **stack_a, t_node **stack_b)
 			ra(stack_a);
 	else
 		while ((*stack_a) != min)
+		{	
+			printf("buscando el error_sort_more");
 			rra(stack_a);
+		}
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: lperez-h <lperez-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 22:26:30 by luifer            #+#    #+#             */
-/*   Updated: 2024/02/19 19:35:12 by lperez-h         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:32:36 by lperez-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_cost_top(t_node *stack)
 		stack = stack->next;
 	}
 }
-
 //Function to calculate the price of the movements in stack A and B
 void	ft_calculate_price(t_node *stack_a, t_node *stack_b)
 {
