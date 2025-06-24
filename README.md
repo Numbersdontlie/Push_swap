@@ -1,5 +1,7 @@
 # Push_swap 📊
-This project is about to write a program that sort numbers in an optimal way (prioritizing the number of movements needed to sort), for this task we need to use 2 stacks and we're allowed to use just some specific movements. The goal of the project is sort the numbers with the minimum number of movements. 
+This project is about to write a program that sort numbers in an optimal way (prioritizing the number of movements needed to sort)
+for this task we need to use 2 stacks and we're allowed to use just some specific movements. 
+The goal of the project is sort the numbers with the minimum number of movements. 
 For 100 numbers it should be maximun 600 movements, for 500 numbers it should be less than 5500 movements
 
 ## Movements 
@@ -18,4 +20,10 @@ The **Turkish Algorithm** https://medium.com/@jamierobertdawson/push-swap-the-le
 Also used a rule (before/above AVG) to do an initial pre sort before the initial movements. More info here: https://github.com/duarte3333/Push_Swap 
 
 ## implementation
-The data structure used in this project, were 2 single linked list (Stack_A and Stack_B). The stack_a will have the numbers as they're received from the user in the command line, and the stack_b will be empty at the beginning. After the program runs, both stacks can be used to move numbers between them, but only using the movements mentioned before. 
+The data structure used in this project, were 2 single linked list (Stack_A and Stack_B)
+The stack_a will have the numbers as they're received from the user in the command line, and the stack_b will be empty at the beginning
+After the program runs, both stacks can be used to move numbers between them, but only using the movements mentioned before.
+
+## Workflow
+
+![alt text](pushswap.png)
